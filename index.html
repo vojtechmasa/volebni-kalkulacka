@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volební kalkulačka ČR 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+        }
+
+        .answers {
+            margin: 20px 0;
+        }
+
+        .answer {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .answer:hover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        .answer.selected {
+            background: #2196f3;
+            color: white;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: #2196f3;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .progress {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #4caf50;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .party-result {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .party-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .party-name {
+            font-weight: bold;
+        }
+
+        .party-score {
+            font-size: 18px;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .ad-banner {
+            text-align: center;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗳️ Volební kalkulačka ČR 2025</h1>
+            <p>Zjisti, která z 12 kandidujících stran je ti nejblíže!</p>
+        </div>
+
+        <div class="ad-banner">
+            <p>🎯 AdSense místo - nahraď "ca-pub-XXXXXXXXX" svým ID</p>
+        </div>
+
+        <div id="quiz-container" class="card">
+            <div class="progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p>Otázka <span id="current">1</span> z <span id="total">15</span></p>
+
+            <div id="questions"></div>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" id="prev" onclick="prevQuestion()" disabled>← Předchozí</button>
+                <button class="btn btn-primary" id="next" onclick="nextQuestion()" disabled>Další →</button>
+            </div>
+        </div>
+
+        <div id="results" class="results">
+            <div class="card">
+                <h2>🎯 Tvoje výsledky</h2>
+                <div id="results-content"></div>
+                <button class="btn btn-primary" onclick="restart()" style="margin-top: 20px;">Zkusit znovu</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const parties = {
+            'ANO': 'ANO 2011',
+            'SPOLU': 'SPOLU (ODS + TOP 09 + KDU-ČSL)',
+            'Piráti': 'Piráti + Zelení',
+            'SPD': 'SPD + PRO + Trikolora + Svobodní',
+            'STAN': 'Starostové a nezávislí',
+            'Stačilo': 'Stačilo! (KSČM + ČSNS + SD-SN + SOCDEM)',
+            'Motoristé': 'Motoristé sobě',
+            'Přísaha': 'Přísaha',
+            'GEN': 'GEN (Generace, ekonomika, naděje)',
+            'Volt': 'Volt Česko',
+            'Voluntia': 'Voluntia',
+            'Ostatní': 'Ostatní malé strany'
+        };
+
+        const questions = [
+            {
+                text: "Měl by stát významně zvýšit minimální mzdu?",
+                parties: { 'Stačilo': 5, 'Piráti': 4, 'STAN': 4, 'ANO': 3, 'Přísaha': 3, 'Volt': 3, 'SPOLU': 2, 'SPD': 2, 'Motoristé': 1, 'GEN': 2, 'Voluntia': 1, 'Ostatní': 3 }
+            },
+            {
+                text: "Měla by Česká republika vystoupit z Evropské unie?",
+                parties: { 'SPD': 5, 'Stačilo': 4, 'Motoristé': 3, 'ANO': 3, 'Přísaha': 2, 'GEN': 2, 'Voluntia': 2, 'Ostatní': 2, 'Piráti': 1, 'SPOLU': 1, 'STAN': 1, 'Volt': 1 }
+            },
+            {
+                text: "Měla by být legalizována marihuana pro rekreační účely?",
+                parties: { 'Piráti': 5, 'Voluntia': 5, 'Volt': 4, 'Stačilo': 3, 'ANO': 2, 'STAN': 2, 'Přísaha': 2, 'GEN': 2, 'Ostatní': 2, 'SPOLU': 1, 'SPD': 1, 'Motoristé': 1 }
+            },
+            {
+                text: "Měl by stát více investovat do veřejné dopravy?",
+                parties: { 'Stačilo': 5, 'Piráti': 4, 'STAN': 4, 'ANO': 4, 'Volt': 4, 'SPOLU': 3, 'Přísaha': 3, 'GEN': 3, 'Ostatní': 4, 'SPD': 2, 'Motoristé': 2, 'Voluntia': 1 }
+            },
+            {
+                text: "Měla by být zpřísněna opatření proti změně klimatu?",
+                parties: { 'Piráti': 5, 'Volt': 5, 'SPOLU': 4, 'STAN': 4, 'Stačilo': 4, 'ANO': 3, 'Přísaha': 3, 'GEN': 3, 'Ostatní': 3, 'Voluntia': 2, 'SPD': 1, 'Motoristé': 1 }
+            },
+            {
+                text: "Měla by být omezena migrace do České republiky?",
+                parties: { 'SPD': 5, 'Stačilo': 4, 'Motoristé': 4, 'ANO': 4, 'SPOLU': 3, 'Přísaha': 3, 'GEN': 3, 'Ostatní': 3, 'STAN': 2, 'Voluntia': 2, 'Piráti': 1, 'Volt': 1 }
+            },
+            {
+                text: "Měly by být sníženy daně pro nejbohatší občany?",
+                parties: { 'Voluntia': 5, 'Motoristé': 5, 'GEN': 4, 'SPOLU': 4, 'ANO': 3, 'STAN': 3, 'Přísaha': 3, 'SPD': 2, 'Volt': 2, 'Ostatní': 2, 'Piráti': 2, 'Stačilo': 1 }
+            },
+            {
+                text: "Měla by být povolena adopce dětí homosexuálními páry?",
+                parties: { 'Piráti': 5, 'Volt': 4, 'Voluntia': 4, 'STAN': 3, 'ANO': 3, 'Přísaha': 3, 'GEN': 2, 'Ostatní': 2, 'Stačilo': 2, 'SPOLU': 1, 'SPD': 1, 'Motoristé': 1 }
+            },
+            {
+                text: "Měla by být zvýšena kontrola nad sociálními sítěmi?",
+                parties: { 'SPOLU': 4, 'Stačilo': 4, 'ANO': 4, 'SPD': 4, 'STAN': 3, 'Přísaha': 3, 'GEN': 3, 'Ostatní': 3, 'Motoristé': 2, 'Volt': 2, 'Piráti': 1, 'Voluntia': 1 }
+            },
+            {
+                text: "Měla by Česká republika přijmout euro do roku 2030?",
+                parties: { 'Volt': 5, 'SPOLU': 4, 'STAN': 4, 'Piráti': 3, 'ANO': 2, 'GEN': 2, 'Přísaha': 2, 'Ostatní': 2, 'Voluntia': 1, 'Motoristé': 1, 'SPD': 1, 'Stačilo': 1 }
+            },
+            {
+                text: "Měla by být zavedena 4denní pracovní doba?",
+                parties: { 'Piráti': 5, 'Stačilo': 4, 'Volt': 3, 'ANO': 3, 'STAN': 3, 'Přísaha': 2, 'GEN': 2, 'SPOLU': 2, 'Ostatní': 3, 'SPD': 1, 'Motoristé': 1, 'Voluntia': 2 }
+            },
+            {
+                text: "Měl by být zaveden univerzální základní příjem?",
+                parties: { 'Piráti': 5, 'Stačilo': 4, 'ANO': 3, 'STAN': 3, 'Volt': 3, 'Přísaha': 2, 'GEN': 2, 'Ostatní': 3, 'SPOLU': 1, 'SPD': 1, 'Motoristé': 1, 'Voluntia': 2 }
+            },
+            {
+                text: "Měla by být ukončena vojenská podpora Ukrajiny?",
+                parties: { 'SPD': 5, 'Stačilo': 5, 'Motoristé': 4, 'ANO': 3, 'Přísaha': 3, 'GEN': 2, 'Voluntia': 2, 'Ostatní': 2, 'Volt': 1, 'SPOLU': 1, 'STAN': 1, 'Piráti': 1 }
+            },
+            {
+                text: "Měl by být zakázán prodej benzínových a dieselových aut od roku 2035?",
+                parties: { 'Piráti': 4, 'Volt': 4, 'SPOLU': 3, 'STAN': 3, 'ANO': 2, 'GEN': 2, 'Přísaha': 2, 'Stačilo': 2, 'Ostatní': 2, 'SPD': 1, 'Motoristé': 1, 'Voluntia': 1 }
+            },
+            {
+                text: "Měla by být povolena eutanazie pro nevyléčitelně nemocné?",
+                parties: { 'Piráti': 5, 'Volt': 4, 'Voluntia': 4, 'ANO': 3, 'STAN': 3, 'Přísaha': 3, 'GEN': 2, 'Stačilo': 2, 'SPOLU': 2, 'Ostatní': 3, 'SPD': 1, 'Motoristé': 1 }
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = {};
+
+        function init() {
+            document.getElementById('total').textContent = questions.length;
+            showQuestion(0);
+        }
+
+        function showQuestion(index) {
+            const container = document.getElementById('questions');
+            const question = questions[index];
+
+            container.innerHTML = `
+                <div class="question active">
+                    <h3>${question.text}</h3>
+                    <div class="answers">
+                        <div class="answer" onclick="selectAnswer(5)">Rozhodně ano</div>
+                        <div class="answer" onclick="selectAnswer(4)">Spíše ano</div>
+                        <div class="answer" onclick="selectAnswer(3)">Nevím</div>
+                        <div class="answer" onclick="selectAnswer(2)">Spíše ne</div>
+                        <div class="answer" onclick="selectAnswer(1)">Rozhodně ne</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('current').textContent = index + 1;
+            updateProgress();
+            updateButtons();
+        }
+
+        function selectAnswer(value) {
+            answers[currentQuestion] = value;
+
+            // Visual feedback
+            document.querySelectorAll('.answer').forEach(a => a.classList.remove('selected'));
+            event.target.classList.add('selected');
+
+            updateButtons();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        }
+
+        function updateButtons() {
+            document.getElementById('prev').disabled = currentQuestion === 0;
+            document.getElementById('next').disabled = !answers.hasOwnProperty(currentQuestion);
+
+            if (currentQuestion === questions.length - 1) {
+                document.getElementById('next').textContent = 'Zobrazit výsledky';
+            } else {
+                document.getElementById('next').textContent = 'Další →';
+            }
+        }
+
+        function calculateResults() {
+            const scores = {};
+
+            Object.keys(parties).forEach(party => {
+                scores[party] = 0;
+            });
+
+            questions.forEach((question, index) => {
+                if (answers[index]) {
+                    Object.keys(question.parties).forEach(party => {
+                        const partyAnswer = question.parties[party];
+                        const userAnswer = answers[index];
+                        const difference = Math.abs(userAnswer - partyAnswer);
+                        const score = Math.max(0, 5 - difference);
+                        scores[party] += score;
+                    });
+                }
+            });
+
+            // Convert to percentages
+            const maxPossibleScore = questions.length * 5;
+            Object.keys(scores).forEach(party => {
+                scores[party] = Math.round((scores[party] / maxPossibleScore) * 100);
+            });
+
+            return scores;
+        }
+
+        function showResults() {
+            const scores = calculateResults();
+            const sortedResults = Object.entries(scores).sort(([, a], [, b]) => b - a);
+
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results').classList.add('active');
+
+            const content = document.getElementById('results-content');
+            content.innerHTML = sortedResults.map(([party, score]) => `
+                <div class="party-result">
+                    <div class="party-header">
+                        <div class="party-name">${parties[party]}</div>
+                        <div class="party-score">${score}%</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function restart() {
+            currentQuestion = 0;
+            answers = {};
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('results').classList.remove('active');
+            showQuestion(0);
+        }
+
+        // Initialize on page load
+        init();
+    </script>
+</body>
+
+</html>
