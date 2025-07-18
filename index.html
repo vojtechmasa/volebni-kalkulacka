@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-8023763343426742">
     <title>Volební kalkulačka ČR 2025</title>
     <style>
         body {
@@ -69,6 +68,47 @@
             color: white;
         }
 
+        .importance {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3e0;
+            border-radius: 8px;
+            border: 1px solid #ffcc02;
+        }
+
+        .importance h4 {
+            margin-bottom: 10px;
+            color: #e65100;
+            font-size: 14px;
+        }
+
+        .importance-options {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .importance-btn {
+            padding: 8px 12px;
+            border: 2px solid #ffcc02;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .importance-btn:hover {
+            background: #fff3e0;
+        }
+
+        .importance-btn.selected {
+            background: #ff9800;
+            border-color: #f57c00;
+            color: white;
+            font-weight: bold;
+        }
+
         .navigation {
             display: flex;
             justify-content: space-between;
@@ -121,6 +161,30 @@
             display: block;
         }
 
+        .detailed-results {
+            display: none;
+        }
+
+        .detailed-results.active {
+            display: block;
+        }
+
+        .topic-analysis {
+            display: none;
+        }
+
+        .topic-analysis.active {
+            display: block;
+        }
+
+        .party-profiles {
+            display: none;
+        }
+
+        .party-profiles.active {
+            display: block;
+        }
+
         .party-result {
             padding: 15px;
             margin: 10px 0;
@@ -144,12 +208,84 @@
             font-weight: bold;
         }
 
+        .party-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .party-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #45a049);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .topic-item {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .topic-title {
+            font-weight: bold;
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .topic-parties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .topic-party {
+            padding: 4px 8px;
+            background: #e3f2fd;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #1565c0;
+        }
+
+        .nav-buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .nav-buttons .btn {
+            margin: 0 10px;
+        }
+
         .ad-banner {
             text-align: center;
             padding: 20px;
             background: #f0f0f0;
             border-radius: 8px;
             margin: 20px 0;
+        }
+
+        .top-result {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .top-result h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .top-result .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1b5e20;
         }
     </style>
 </head>
@@ -158,7 +294,13 @@
     <div class="container">
         <div class="header">
             <h1>🗳️ Volební kalkulačka ČR 2025</h1>
-            <p>Zjisti, která z 12 kandidujících stran je ti nejblíže!</p>
+            <p>Zjistěte, která z kandidujících stran je Vám nejblíže!</p>
+
+            <div
+                style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 14px; border-left: 4px solid #2196f3;">
+                <strong>ℹ️ Nezávislost:</strong> Tato aplikace není sponzorována žádnou politickou stranou a je zcela
+                nezávislá. Výsledky jsou založeny na veřejně dostupných programech stran.
+            </div>
         </div>
 
         <div class="ad-banner">
@@ -169,7 +311,7 @@
             <div class="progress">
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
-            <p>Otázka <span id="current">1</span> z <span id="total">15</span></p>
+            <p>Otázka <span id="current">1</span> z <span id="total">27</span></p>
 
             <div id="questions"></div>
 
@@ -181,9 +323,71 @@
 
         <div id="results" class="results">
             <div class="card">
-                <h2>🎯 Tvoje výsledky</h2>
+                <h2>🎯 Vaše výsledky</h2>
                 <div id="results-content"></div>
-                <button class="btn btn-primary" onclick="restart()" style="margin-top: 20px;">Zkusit znovu</button>
+                <div class="nav-buttons">
+                    <button class="btn btn-primary" onclick="showDetailedResults()">📊 Podrobné výsledky všech
+                        stran</button>
+                    <button class="btn btn-primary" onclick="restart()">🔄 Zkusit znovu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Results -->
+        <div id="detailed-results" class="detailed-results">
+            <div class="card">
+                <h2>📊 Podrobné výsledky všech stran</h2>
+                <p style="color: #666; margin-bottom: 20px;">Zde vidíte, jak se shodujete se všemi kandidujícími
+                    stranami včetně grafického znázornění.</p>
+                <div id="all-parties-results"></div>
+
+                <div class="ad-banner">
+                    <p>🎯 AdSense Banner #2 - nahraď "ca-pub-XXXXXXXXX" svým ID</p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showBasicResults()">← Zpět na základní výsledky</button>
+                    <button class="btn btn-primary" onclick="showTopicAnalysis()">🔍 Analýza podle témat</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic Analysis -->
+        <div id="topic-analysis" class="topic-analysis">
+            <div class="card">
+                <h2>🔍 Analýza podle témat</h2>
+                <p style="color: #666; margin-bottom: 20px;">Podívejte se, ve kterých oblastech se shodujete s různými
+                    stranami nejvíce.</p>
+                <div id="topic-breakdown"></div>
+
+                <div class="ad-banner">
+                    <p>🎯 AdSense Banner #3 - nahraď "ca-pub-XXXXXXXXX" svým ID</p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showDetailedResults()">← Zpět na podrobné
+                        výsledky</button>
+                    <button class="btn btn-primary" onclick="showPartyProfiles()">🏛️ Profily stran</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Party Profiles -->
+        <div id="party-profiles" class="party-profiles">
+            <div class="card">
+                <h2>🏛️ Profily politických stran</h2>
+                <p style="color: #666; margin-bottom: 20px;">Detailní informace o kandidujících stranách a jejich
+                    programech.</p>
+                <div id="profiles-content"></div>
+
+                <div class="ad-banner">
+                    <p>🎯 AdSense Banner #4 - nahraď "ca-pub-XXXXXXXXX" svým ID</p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showTopicAnalysis()">← Zpět na analýzu témat</button>
+                    <button class="btn btn-primary" onclick="restart()">🔄 Zkusit znovu</button>
+                </div>
             </div>
         </div>
     </div>
@@ -264,11 +468,60 @@
             {
                 text: "Měla by být povolena eutanazie pro nevyléčitelně nemocné?",
                 parties: { 'Piráti': 5, 'Volt': 4, 'Voluntia': 4, 'ANO': 3, 'STAN': 3, 'Přísaha': 3, 'GEN': 2, 'Stačilo': 2, 'SPOLU': 2, 'Ostatní': 3, 'SPD': 1, 'Motoristé': 1 }
+            },
+            {
+                text: "Měla by být zvýšena progresivita daňového systému?",
+                parties: { 'Stačilo': 5, 'Piráti': 4, 'Volt': 3, 'ANO': 3, 'STAN': 3, 'Přísaha': 3, 'Ostatní': 3, 'SPOLU': 2, 'GEN': 2, 'SPD': 2, 'Motoristé': 1, 'Voluntia': 1 }
+            },
+            {
+                text: "Měl by být omezen počet mandátů jednoho poslance?",
+                parties: { 'Piráti': 5, 'Přísaha': 5, 'ANO': 4, 'SPD': 4, 'Volt': 3, 'STAN': 3, 'Stačilo': 3, 'GEN': 3, 'Voluntia': 3, 'Ostatní': 4, 'SPOLU': 2, 'Motoristé': 2 }
+            },
+            {
+                text: "Měla by být zavedena povinná vojenská služba?",
+                parties: { 'SPD': 5, 'SPOLU': 4, 'Stačilo': 4, 'Motoristé': 3, 'ANO': 3, 'Přísaha': 2, 'GEN': 2, 'Ostatní': 3, 'STAN': 2, 'Voluntia': 1, 'Piráti': 1, 'Volt': 1 }
+            },
+            {
+                text: "Měl by být zaveden limit pro výši politických platů?",
+                parties: { 'SPD': 5, 'Stačilo': 5, 'Přísaha': 4, 'ANO': 4, 'Piráti': 4, 'Volt': 3, 'STAN': 3, 'GEN': 3, 'Voluntia': 3, 'Ostatní': 4, 'SPOLU': 2, 'Motoristé': 2 }
+            },
+            {
+                text: "Měla by být povolena registrovaná partnerství pro stejnopohlavní páry?",
+                parties: { 'Piráti': 5, 'Volt': 5, 'Voluntia': 4, 'STAN': 4, 'ANO': 3, 'Přísaha': 3, 'GEN': 3, 'Ostatní': 3, 'Stačilo': 2, 'SPOLU': 2, 'SPD': 1, 'Motoristé': 1 }
+            },
+            {
+                text: "Měl by být zaveden referendum o důležitých otázkách?",
+                parties: { 'SPD': 5, 'Piráti': 4, 'Stačilo': 4, 'Přísaha': 4, 'ANO': 3, 'Volt': 3, 'Voluntia': 4, 'GEN': 3, 'Ostatní': 4, 'STAN': 2, 'SPOLU': 2, 'Motoristé': 3 }
+            },
+            {
+                text: "Měla by být zvýšena podpora pro malé a střední podnikatele?",
+                parties: { 'Motoristé': 5, 'Voluntia': 5, 'GEN': 5, 'SPOLU': 4, 'ANO': 4, 'STAN': 4, 'Přísaha': 3, 'Volt': 3, 'Ostatní': 4, 'Piráti': 3, 'SPD': 3, 'Stačilo': 2 }
+            },
+            {
+                text: "Měl by být zrušen Senát Parlamentu ČR?",
+                parties: { 'Stačilo': 5, 'SPD': 5, 'ANO': 4, 'Přísaha': 3, 'Motoristé': 3, 'GEN': 2, 'STAN': 2, 'Piráti': 2, 'Ostatní': 3, 'Voluntia': 2, 'SPOLU': 1, 'Volt': 1 }
+            },
+            {
+                text: "Měla by být zpřísněna kontrola médií a jejich vlastnictví?",
+                parties: { 'Piráti': 5, 'Přísaha': 4, 'Volt': 4, 'Stačilo': 3, 'ANO': 3, 'STAN': 3, 'GEN': 3, 'Ostatní': 3, 'SPOLU': 2, 'SPD': 2, 'Motoristé': 2, 'Voluntia': 1 }
+            },
+            {
+                text: "Měl by být zaveden povinný podíl obnovitelných zdrojů energie?",
+                parties: { 'Piráti': 5, 'Volt': 5, 'SPOLU': 4, 'STAN': 4, 'Stačilo': 3, 'ANO': 3, 'Přísaha': 3, 'GEN': 3, 'Ostatní': 4, 'Voluntia': 2, 'SPD': 1, 'Motoristé': 1 }
+            },
+            {
+                text: "Měla by být omezena pravomoc prezidenta republiky?",
+                parties: { 'Piráti': 4, 'Volt': 4, 'SPOLU': 3, 'STAN': 3, 'Přísaha': 3, 'GEN': 3, 'Voluntia': 3, 'Ostatní': 3, 'ANO': 2, 'Stačilo': 2, 'SPD': 2, 'Motoristé': 2 }
+            },
+            {
+                text: "Měl by být zaveden zákaz hazardu ve městech?",
+                parties: { 'SPOLU': 5, 'Piráti': 4, 'STAN': 4, 'Volt': 3, 'ANO': 3, 'Přísaha': 3, 'GEN': 3, 'Stačilo': 3, 'Ostatní': 4, 'SPD': 2, 'Motoristé': 2, 'Voluntia': 1 }
             }
         ];
 
         let currentQuestion = 0;
         let answers = {};
+        let importance = {};
 
         function init() {
             document.getElementById('total').textContent = questions.length;
@@ -289,8 +542,32 @@
                         <div class="answer" onclick="selectAnswer(2)">Spíše ne</div>
                         <div class="answer" onclick="selectAnswer(1)">Rozhodně ne</div>
                     </div>
+                    <div class="importance">
+                        <h4>🎯 Jak je pro Vás tato otázka důležitá?</h4>
+                        <div class="importance-options">
+                            <div class="importance-btn" onclick="selectImportance(1)">Málo (1×)</div>
+                            <div class="importance-btn" onclick="selectImportance(2)">Středně (2×)</div>
+                            <div class="importance-btn selected" onclick="selectImportance(3)">Důležité (3×)</div>
+                            <div class="importance-btn" onclick="selectImportance(4)">Velmi (4×)</div>
+                            <div class="importance-btn" onclick="selectImportance(5)">Kriticky (5×)</div>
+                        </div>
+                    </div>
                 </div>
             `;
+
+            // Restore previous selections
+            if (answers[index] !== undefined) {
+                const answerElements = container.querySelectorAll('.answer');
+                answerElements[5 - answers[index]].classList.add('selected');
+            }
+
+            if (importance[index] !== undefined) {
+                const importanceElements = container.querySelectorAll('.importance-btn');
+                importanceElements.forEach(el => el.classList.remove('selected'));
+                importanceElements[importance[index] - 1].classList.add('selected');
+            } else {
+                importance[index] = 3; // Default
+            }
 
             document.getElementById('current').textContent = index + 1;
             updateProgress();
@@ -300,11 +577,17 @@
         function selectAnswer(value) {
             answers[currentQuestion] = value;
 
-            // Visual feedback
             document.querySelectorAll('.answer').forEach(a => a.classList.remove('selected'));
             event.target.classList.add('selected');
 
             updateButtons();
+        }
+
+        function selectImportance(weight) {
+            importance[currentQuestion] = weight;
+
+            document.querySelectorAll('.importance-btn').forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
         }
 
         function nextQuestion() {
@@ -346,22 +629,30 @@
                 scores[party] = 0;
             });
 
+            let totalWeight = 0;
+
             questions.forEach((question, index) => {
-                if (answers[index]) {
+                if (answers[index] !== undefined) {
+                    const userAnswer = answers[index];
+                    const questionWeight = importance[index] || 3;
+                    totalWeight += questionWeight;
+
                     Object.keys(question.parties).forEach(party => {
                         const partyAnswer = question.parties[party];
-                        const userAnswer = answers[index];
                         const difference = Math.abs(userAnswer - partyAnswer);
-                        const score = Math.max(0, 5 - difference);
-                        scores[party] += score;
+                        const agreement = Math.max(0, 5 - difference);
+                        scores[party] += agreement * questionWeight;
                     });
                 }
             });
 
-            // Convert to percentages
-            const maxPossibleScore = questions.length * 5;
+            const maxPossibleScore = totalWeight * 5;
             Object.keys(scores).forEach(party => {
-                scores[party] = Math.round((scores[party] / maxPossibleScore) * 100);
+                if (maxPossibleScore > 0) {
+                    scores[party] = Math.round((scores[party] / maxPossibleScore) * 100);
+                } else {
+                    scores[party] = 0;
+                }
             });
 
             return scores;
@@ -372,28 +663,210 @@
             const sortedResults = Object.entries(scores).sort(([, a], [, b]) => b - a);
 
             document.getElementById('quiz-container').style.display = 'none';
+            hideAllResults();
             document.getElementById('results').classList.add('active');
 
             const content = document.getElementById('results-content');
+            content.innerHTML = `
+                <div class="top-result">
+                    <h3>🎯 Vaše nejbližší shoda</h3>
+                    <div class="score">${parties[sortedResults[0][0]]}</div>
+                    <div class="score">${sortedResults[0][1]}% shoda</div>
+                </div>
+                <h4>📊 Top 5 nejbližších stran:</h4>
+            ` + sortedResults.slice(0, 5).map(([party, score]) => `
+                <div class="party-result">
+                    <div class="party-header">
+                        <div class="party-name">${parties[party]}</div>
+                        <div class="party-score">${score}%</div>
+                    </div>
+                    <div class="party-bar">
+                        <div class="party-bar-fill" style="width: ${score}%"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showDetailedResults() {
+            const scores = calculateResults();
+            const sortedResults = Object.entries(scores).sort(([, a], [, b]) => b - a);
+
+            hideAllResults();
+            document.getElementById('detailed-results').classList.add('active');
+
+            const content = document.getElementById('all-parties-results');
             content.innerHTML = sortedResults.map(([party, score]) => `
                 <div class="party-result">
                     <div class="party-header">
                         <div class="party-name">${parties[party]}</div>
                         <div class="party-score">${score}%</div>
                     </div>
+                    <div class="party-bar">
+                        <div class="party-bar-fill" style="width: ${score}%"></div>
+                    </div>
                 </div>
             `).join('');
+        }
+
+        function showTopicAnalysis() {
+            hideAllResults();
+            document.getElementById('topic-analysis').classList.add('active');
+
+            const topics = {
+                'Ekonomika': ['Měl by stát významně zvýšit minimální mzdu?', 'Měly by být sníženy daně pro nejbohatší občany?', 'Měla by být zvýšena progresivita daňového systému?'],
+                'Evropská unie': ['Měla by Česká republika vystoupit z Evropské unie?', 'Měla by Česká republika přijmout euro do roku 2030?'],
+                'Sociální politika': ['Měla by být zavedena 4denní pracovní doba?', 'Měl by být zaveden univerzální základní příjem?'],
+                'Ekologie': ['Měla by být zpřísněna opatření proti změně klimatu?', 'Měl by být zakázán prodej benzínových a dieselových aut od roku 2035?'],
+                'Lidská práva': ['Měla by být povolena adopce dětí homosexuálními páry?', 'Měla by být povolena registrovaná partnerství pro stejnopohlavní páry?'],
+                'Bezpečnost': ['Měla by být ukončena vojenská podpora Ukrajiny?', 'Měla by být omezena migrace do České republiky?']
+            };
+
+            const content = document.getElementById('topic-breakdown');
+            content.innerHTML = Object.entries(topics).map(([topic, questions]) => `
+                <div class="topic-item">
+                    <div class="topic-title">${topic}</div>
+                    <div class="topic-parties">
+                        ${getTopPartiesForTopic(questions).map(party =>
+                `<span class="topic-party">${parties[party]}</span>`
+            ).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showPartyProfiles() {
+            hideAllResults();
+            document.getElementById('party-profiles').classList.add('active');
+
+            const profiles = {
+                'ANO': {
+                    leader: 'Karel Havlíček a Alena Schillerová',
+                    description: 'Hnutí ANO 2011 prošlo v roce 2023 reorganizací vedení. Andrej Babiš sice zůstává předsedou, ale hlavními tvářemi strany se stali Karel Havlíček (šéf stínové vlády a budoucí premiér) a Alena Schillerová. Strana se zaměřuje na praktickou politiku bez ideologických sporů, efektivní správu státu a podporu občanů v každodenních záležitostech.',
+                    priorities: ['Digitalizace státu a eGovernment', 'Podpora rodin s dětmi', 'Ekonomický růst a podpora podnikání', 'Rozumná energetická politika', 'Zlepšení zdravotnictví', 'Pragmatická zahraniční politika']
+                },
+                'SPOLU': {
+                    leader: 'Petr Fiala (ODS), Markéta Pekarová Adamová (TOP 09), Marek Výborný (KDU-ČSL)',
+                    description: 'Koalice tří středopravých a pravicových stran. ODS, TOP 09 a KDU-ČSL tvoří základ současné vlády a pokračují ve spolupráci i do voleb 2025. Zastávají konzervativní hodnoty, podporují svobodný trh a silnou pozici ČR v NATO a EU.',
+                    priorities: ['Svobodný trh a nízké daně', 'Silná obrana a NATO', 'Evropská integrace', 'Tradiční křesťanské hodnoty', 'Vzdělání a věda', 'Boj proti korupci']
+                },
+                'Piráti': {
+                    leader: 'Zdeněk Hřib (Piráti), Gabriela Svárovská (Zelení)',
+                    description: 'Česká pirátská strana kandiduje s podporou Strany zelených. Po odchodu z vlády v září 2024 a rezignaci Ivana Bartoše se novým předsedou stal Zdeněk Hřib. Zelené vede Gabriela Svárovská.',
+                    priorities: ['Digitalizace a eGovernment', 'Transparentnost a open data', 'Ekologie a Green Deal', 'Lidská práva a svobody', 'Legalizace konopí', 'Boj proti korupci']
+                },
+                'SPD': {
+                    leader: 'Tomio Okamura',
+                    description: 'Široká koalice euroskeptických stran. Na kandidátce SPD budou i zástupci PRO, Trikolory a Svobodných. Toto spojení má zabránit propadnutí hlasů a posílit euroskeptické síly v parlamentu.',
+                    priorities: ['Přímá demokracie a referenda', 'Vystoupení z EU', 'Omezení migrace', 'Národní suverenita', 'Podpora českých zájmů', 'Kritika Green Dealu']
+                },
+                'STAN': {
+                    leader: 'Vít Rakušan',
+                    description: 'Starostové a nezávislí kandidují samostatně po rozbití koalice s Piráty. Středová strana zaměřená na regionální rozvoj, komunální politiku a praktické řešení problémů občanů bez zbytečné ideologie.',
+                    priorities: ['Regionální rozvoj', 'Komunální politika', 'Transparentnost', 'Pragmatické řešení problémů', 'Podpora měst a obcí', 'Kvalitní veřejné služby']
+                },
+                'Stačilo': {
+                    leader: 'Kateřina Konečná',
+                    description: 'Levicové vlastenecké hnutí sdružující KSČM, ČSNS, SD-SN a SOCDEM. Vzniklo jako reakce na propadnutí levicových hlasů v minulých volbách. Vede ho europoslankyně Kateřina Konečná.',
+                    priorities: ['Sociální spravedlnost', 'Vlastenectví a národní zájmy', 'Kritika EU a NATO', 'Podpora pracujících', 'Cenová regulace', 'Referendum o EU']
+                },
+                'Motoristé': {
+                    leader: 'Petr Macinka',
+                    description: 'Pravicová strana navazující na odkaz Václava Klause. Kritizuje Green Deal EU a prosazuje svobodu podnikání s minimálními státními zásahy. Kandiduje samostatně po rozchodu s Přísahou.',
+                    priorities: ['Svoboda podnikání', 'Kritika Green Dealu', 'Nízké daně', 'Minimální státní zásahy', 'Podpora automobilismu', 'Euroskepticismus']
+                },
+                'Přísaha': {
+                    leader: 'Róbert Šlachta',
+                    description: 'Strana bývalého šéfa NCOZ Róberta Šlachty zaměřená na boj proti korupci a modernizaci státního aparátu. Kandiduje samostatně po ukončení spolupráce s Motoristy.',
+                    priorities: ['Boj proti korupci', 'Transparentní justice', 'Efektivní státní správa', 'Bezpečnost občanů', 'Modernizace policie', 'Nezávislost justice']
+                },
+                'GEN': {
+                    leader: 'Vojtěch Ryvola',
+                    description: 'Nová pravicová strana založená v roce 2025 bývalými členy ANO a dalšími politiky. Cílem je vrátit do popředí skutečné pravicové hodnoty a oslovit mladou generaci voličů.',
+                    priorities: ['Pravicové ekonomické hodnoty', 'Vzdělání a věda', 'Ekonomický růst', 'Generační změna v politice', 'Inovace a technologie', 'Podpora podnikání']
+                },
+                'Volt': {
+                    leader: 'Věra Jourovová',
+                    description: 'Proevropská liberální strana, část celoevropského hnutí Volt. Zaměřuje se především na mladé liberální voliče z měst a prosazuje silnou evropskou integraci.',
+                    priorities: ['Evropská federace', 'Digitální transformace', 'Klimatická politika', 'Práva mladých lidí', 'Vzdělání a výzkum', 'Liberální hodnoty']
+                },
+                'Voluntia': {
+                    leader: 'Tomáš Roud',
+                    description: 'Libertariánská strana vzniklá v roce 2024 odchodem několika členů ze Svobodných. Hlásí se k libertariánské filosofii s důrazem na dobrovolnost, osobní svobodu a minimální stát.',
+                    priorities: ['Libertariánské principy', 'Minimální stát', 'Osobní svoboda', 'Volný trh', 'Dobrovolnost ve všem', 'Minimalizace státní moci']
+                },
+                'Ostatní': {
+                    leader: 'Různí lídři',
+                    description: 'Kategorie zahrnující další menší politické subjekty jako DSZ - Za práva zvířat, SMSka, REFERENDUM, VIZE 2025, JaSaN a další, které mají menší šanci na zvolení.',
+                    priorities: ['Specifické zájmy', 'Práva zvířat', 'Referenda', 'Místní témata', 'Alternativní přístupy', 'Nové politické nápady']
+                }
+            };
+
+            const content = document.getElementById('profiles-content');
+            content.innerHTML = Object.entries(profiles).map(([key, profile]) => `
+                <div class="party-result" style="margin-bottom: 20px;">
+                    <h3 style="color: #1976d2; margin-bottom: 10px;">${parties[key]}</h3>
+                    <p><strong>Lídr:</strong> ${profile.leader}</p>
+                    <p style="margin: 10px 0;">${profile.description}</p>
+                    <p><strong>Klíčové priority:</strong> ${profile.priorities.join(', ')}</p>
+                </div>
+            `).join('');
+        }
+
+        function getTopPartiesForTopic(topicQuestions) {
+            const scores = calculateResults();
+            const topicScores = {};
+
+            // Initialize scores for all parties
+            Object.keys(parties).forEach(party => {
+                topicScores[party] = 0;
+            });
+
+            // Calculate scores for this specific topic
+            topicQuestions.forEach(questionText => {
+                const questionIndex = questions.findIndex(q => q.text === questionText);
+                if (questionIndex !== -1 && answers[questionIndex] !== undefined) {
+                    const question = questions[questionIndex];
+                    const userAnswer = answers[questionIndex];
+                    const questionWeight = importance[questionIndex] || 3;
+
+                    Object.keys(question.parties).forEach(party => {
+                        const partyAnswer = question.parties[party];
+                        const difference = Math.abs(userAnswer - partyAnswer);
+                        const agreement = Math.max(0, 5 - difference);
+                        topicScores[party] += agreement * questionWeight;
+                    });
+                }
+            });
+
+            // Return top 4 parties for this topic
+            return Object.entries(topicScores)
+                .sort(([, a], [, b]) => b - a)
+                .slice(0, 4)
+                .map(([party]) => party);
+        }
+
+        function showBasicResults() {
+            hideAllResults();
+            document.getElementById('results').classList.add('active');
+        }
+
+        function hideAllResults() {
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('detailed-results').classList.remove('active');
+            document.getElementById('topic-analysis').classList.remove('active');
+            document.getElementById('party-profiles').classList.remove('active');
         }
 
         function restart() {
             currentQuestion = 0;
             answers = {};
+            importance = {};
             document.getElementById('quiz-container').style.display = 'block';
-            document.getElementById('results').classList.remove('active');
+            hideAllResults();
             showQuestion(0);
         }
 
-        // Initialize on page load
+        // Initialize
         init();
     </script>
 </body>
