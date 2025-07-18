@@ -4,7 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volební kalkulačka ČR 2025</title>
+    <title>Volební kalkulačka ČR 2025 - Zjistěte, která strana je Vám nejblíže | 27 otázek</title>
+    <meta name="description"
+        content="Nejpřesnější volební kalkulačka pro volby do Parlamentu ČR 2025. Odpovězte na 27 otázek s váženými odpověďmi a zjistěte, která z 12 kandidujících stran je Vám nejblíže. Včetně profilů stran, analýzy podle témat a možnosti sdílení výsledků.">
+    <meta name="keywords"
+        content="volební kalkulačka 2025, volby do parlamentu ČR, politické strany, ANO, SPOLU, Piráti, SPD, STAN, Stačilo, Motoristé, Přísaha, GEN, Volt, Voluntia, politický test, volební test, česká politika">
+    <meta name="author" content="Volební kalkulačka ČR">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://volebnikalkulacka.org">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://volebnikalkulacka.org">
+    <meta property="og:title" content="Volební kalkulačka ČR 2025 - Zjistěte svou politickou shodu">
+    <meta property="og:description"
+        content="Nejpřesnější volební kalkulačka s 27 otázkami. Zjistěte, která z 12 kandidujících stran je Vám nejblíže. Včetně systému vážení otázek a detailní analýzy výsledků.">
+    <meta property="og:image" content="https://volebnikalkulacka.org/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Volební kalkulačka ČR 2025">
+    <meta property="og:locale" content="cs_CZ">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://volebnikalkulacka.org">
+    <meta name="twitter:title" content="Volební kalkulačka ČR 2025 - Zjistěte svou politickou shodu">
+    <meta name="twitter:description"
+        content="27 otázek, 12 stran, systém vážení. Nejpřesnější volební kalkulačka pro volby 2025.">
+    <meta name="twitter:image" content="https://volebnikalkulacka.org/twitter-image.jpg">
+    <meta name="twitter:creator" content="@volebnikalkulacka">
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#1976d2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Volební kalkulačka 2025">
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Volební kalkulačka ČR 2025",
+      "description": "Nejpřesnější volební kalkulačka pro volby do Parlamentu ČR 2025 s 27 otázkami a systémem vážení odpověďí",
+      "url": "https://volebnikalkulacka.org",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CZK"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Volební kalkulačka ČR"
+      },
+      "keywords": "volební kalkulačka, volby 2025, české politické strany, politický test",
+      "inLanguage": "cs",
+      "potentialAction": {
+        "@type": "UseAction",
+        "target": "https://volebnikalkulacka.org"
+      }
+    }
+    </script>
+
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXX"
+        crossorigin="anonymous"></script>
+
+    <!-- Google Analytics - replace GA_MEASUREMENT_ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -252,6 +327,62 @@
             color: #1565c0;
         }
 
+        .share-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+
+        .share-facebook {
+            background: #1877f2;
+        }
+
+        .share-twitter {
+            background: #1da1f2;
+        }
+
+        .share-whatsapp {
+            background: #25d366;
+        }
+
+        .share-email {
+            background: #d44638;
+        }
+
+        .share-copy {
+            background: #6c757d;
+        }
+
         .nav-buttons {
             text-align: center;
             margin: 30px 0;
@@ -259,6 +390,23 @@
 
         .nav-buttons .btn {
             margin: 0 10px;
+        }
+
+        .result-summary {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .result-summary h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .result-summary p {
+            margin: 5px 0;
+            color: #1b5e20;
         }
 
         .ad-banner {
@@ -304,7 +452,8 @@
         </div>
 
         <div class="ad-banner">
-            <p>🎯 AdSense místo - nahraď "ca-pub-XXXXXXXXX" svým ID</p>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXX" data-ad-slot="1111111111"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
         </div>
 
         <div id="quiz-container" class="card">
@@ -342,7 +491,8 @@
                 <div id="all-parties-results"></div>
 
                 <div class="ad-banner">
-                    <p>🎯 AdSense Banner #2 - nahraď "ca-pub-XXXXXXXXX" svým ID</p>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXX"
+                        data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 </div>
 
                 <div class="nav-buttons">
@@ -361,7 +511,8 @@
                 <div id="topic-breakdown"></div>
 
                 <div class="ad-banner">
-                    <p>🎯 AdSense Banner #3 - nahraď "ca-pub-XXXXXXXXX" svým ID</p>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXX"
+                        data-ad-slot="3333333333" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 </div>
 
                 <div class="nav-buttons">
@@ -381,7 +532,8 @@
                 <div id="profiles-content"></div>
 
                 <div class="ad-banner">
-                    <p>🎯 AdSense Banner #4 - nahraď "ca-pub-XXXXXXXXX" svým ID</p>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXX"
+                        data-ad-slot="4444444444" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 </div>
 
                 <div class="nav-buttons">
@@ -580,6 +732,9 @@
             document.querySelectorAll('.answer').forEach(a => a.classList.remove('selected'));
             event.target.classList.add('selected');
 
+            // Track answer selection
+            trackEvent('answer_selected', 'Quiz', `Q${currentQuestion + 1}_${value}`);
+
             updateButtons();
         }
 
@@ -662,6 +817,9 @@
             const scores = calculateResults();
             const sortedResults = Object.entries(scores).sort(([, a], [, b]) => b - a);
 
+            // Track quiz completion
+            trackEvent('quiz_completed', 'Quiz', `${parties[sortedResults[0][0]]}_${sortedResults[0][1]}%`);
+
             document.getElementById('quiz-container').style.display = 'none';
             hideAllResults();
             document.getElementById('results').classList.add('active');
@@ -673,6 +831,33 @@
                     <div class="score">${parties[sortedResults[0][0]]}</div>
                     <div class="score">${sortedResults[0][1]}% shoda</div>
                 </div>
+                
+                <div class="share-section">
+                    <h4>📢 Sdílejte své výsledky</h4>
+                    <div class="result-summary">
+                        <h4>Váš výsledek:</h4>
+                        <p><strong>${parties[sortedResults[0][0]]}</strong> - ${sortedResults[0][1]}% shoda</p>
+                        <p>Top 3: ${sortedResults.slice(0, 3).map(([party, score]) => `${parties[party]} (${score}%)`).join(', ')}</p>
+                    </div>
+                    <div class="share-buttons">
+                        <button class="share-btn share-facebook" onclick="shareToFacebook()">
+                            📘 Facebook
+                        </button>
+                        <button class="share-btn share-twitter" onclick="shareToTwitter()">
+                            🐦 Twitter
+                        </button>
+                        <button class="share-btn share-whatsapp" onclick="shareToWhatsApp()">
+                            💬 WhatsApp
+                        </button>
+                        <button class="share-btn share-email" onclick="shareViaEmail()">
+                            ✉️ Email
+                        </button>
+                        <button class="share-btn share-copy" id="copy-btn" onclick="copyResultsLink()">
+                            🔗 Kopírovat odkaz
+                        </button>
+                    </div>
+                </div>
+                
                 <h4>📊 Top 5 nejbližších stran:</h4>
             ` + sortedResults.slice(0, 5).map(([party, score]) => `
                 <div class="party-result">
@@ -857,6 +1042,133 @@
             document.getElementById('party-profiles').classList.remove('active');
         }
 
+        // Sharing functions
+        function getResultsSummary() {
+            const scores = calculateResults();
+            const sortedResults = Object.entries(scores).sort(([, a], [, b]) => b - a);
+            const topParty = sortedResults[0];
+
+            return {
+                topParty: parties[topParty[0]],
+                topScore: topParty[1],
+                top3: sortedResults.slice(0, 3).map(([party, score]) => `${parties[party]} (${score}%)`),
+                url: window.location.href.split('?')[0] // Clean URL without parameters
+            };
+        }
+
+        function shareToFacebook() {
+            const summary = getResultsSummary();
+            const text = `Zjistil(a) jsem svou politickou shodu pomocí Volební kalkulačky ČR 2025! Má nejbližší strana: ${summary.topParty} s ${summary.topScore}% shodou.`;
+
+            trackEvent('share', 'Social', 'Facebook');
+
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(summary.url)}&quote=${encodeURIComponent(text)}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToTwitter() {
+            const summary = getResultsSummary();
+            const text = `🗳️ Volební kalkulačka ČR 2025: Má nejbližší shoda je s ${summary.topParty} (${summary.topScore}%)! 
+            
+Top 3: ${summary.top3.join(', ')}
+
+Zjistěte svou politickou shodu také:`;
+
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(summary.url)}`;
+            window.open(twitterUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToWhatsApp() {
+            const summary = getResultsSummary();
+            const text = `🗳️ Volební kalkulačka ČR 2025
+
+Má nejbližší politická shoda:
+${summary.topParty} - ${summary.topScore}%
+
+Top 3 strany:
+${summary.top3.join('\n')}
+
+Zkus si také: ${summary.url}`;
+
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function shareViaEmail() {
+            const summary = getResultsSummary();
+            const subject = 'Moje výsledky z Volební kalkulačky ČR 2025';
+            const body = `Ahoj!
+
+Právě jsem si vyzkoušel(a) Volební kalkulačku ČR 2025 a zjistil(a) svou politickou shodu.
+
+Moje výsledky:
+🎯 Nejbližší shoda: ${summary.topParty} (${summary.topScore}%)
+
+Top 3 strany:
+${summary.top3.join('\n')}
+
+Vyzkoušej si to také: ${summary.url}
+
+Volební kalkulačka obsahuje 27 otázek a ukáže ti, která z kandidujících stran je ti nejblíže!`;
+
+            const emailUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = emailUrl;
+        }
+
+        function copyResultsLink() {
+            const summary = getResultsSummary();
+            const copyBtn = document.getElementById('copy-btn');
+
+            // Create detailed text for clipboard
+            const textToCopy = `🗳️ Volební kalkulačka ČR 2025
+
+Má nejbližší politická shoda: ${summary.topParty} (${summary.topScore}%)
+
+Top 3: ${summary.top3.join(', ')}
+
+Zjisti svou shodu také: ${summary.url}`;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                // Modern clipboard API
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    copyBtn.textContent = '✅ Zkopírováno!';
+                    copyBtn.classList.add('copy-success');
+                    setTimeout(() => {
+                        copyBtn.textContent = '🔗 Kopírovat odkaz';
+                        copyBtn.classList.remove('copy-success');
+                    }, 2000);
+                }).catch(() => {
+                    fallbackCopyText(textToCopy);
+                });
+            } else {
+                fallbackCopyText(textToCopy);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            textArea.setSelectionRange(0, 99999);
+
+            try {
+                document.execCommand('copy');
+                const copyBtn = document.getElementById('copy-btn');
+                copyBtn.textContent = '✅ Zkopírováno!';
+                copyBtn.classList.add('copy-success');
+                setTimeout(() => {
+                    copyBtn.textContent = '🔗 Kopírovat odkaz';
+                    copyBtn.classList.remove('copy-success');
+                }, 2000);
+            } catch (err) {
+                alert('Kopírování se nepodařilo. Zkopírujte si odkaz ručně: ' + window.location.href);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
         function restart() {
             currentQuestion = 0;
             answers = {};
@@ -866,8 +1178,35 @@
             showQuestion(0);
         }
 
+        // Initialize AdSense ads
+        function initializeAds() {
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+                console.log('AdSense not loaded yet');
+            }
+        }
+
+        // Track events for analytics
+        function trackEvent(action, category = 'Quiz', label = '') {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    event_category: category,
+                    event_label: label
+                });
+            }
+        }
+
         // Initialize
         init();
+
+        // Initialize ads when page loads
+        window.addEventListener('load', () => {
+            setTimeout(initializeAds, 1000);
+        });
     </script>
 </body>
 
