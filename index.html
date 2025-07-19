@@ -123,9 +123,10 @@
             padding: 0;
             min-height: 100vh;
             overflow-x: hidden;
+            font-size: 80%;
         }
 
-        /* Animated Background */
+        /* Static Background */
         .bg-animation {
             position: fixed;
             width: 100%;
@@ -133,33 +134,18 @@
             top: 0;
             left: 0;
             z-index: -1;
-            background: linear-gradient(45deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
             overflow: hidden;
         }
 
         .bg-animation::before {
             content: '';
             position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg) scale(1);
-            }
-
-            50% {
-                transform: rotate(180deg) scale(1.1);
-            }
-
-            100% {
-                transform: rotate(360deg) scale(1);
-            }
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
         }
 
         .container {
@@ -322,44 +308,26 @@
             border: 2px solid rgba(99, 102, 241, 0.2);
             border-radius: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-weight: 500;
             font-size: 1.1rem;
             position: relative;
             overflow: hidden;
         }
 
-        .answer::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
         .answer:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: rgba(99, 102, 241, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
-        }
-
-        .answer:hover::before {
-            width: 300px;
-            height: 300px;
+            background: rgba(99, 102, 241, 0.08);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.15);
         }
 
         .answer.selected {
             background: var(--gradient);
             border-color: transparent;
             color: white;
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+            transform: scale(1.01);
+            box-shadow: 0 6px 20px -5px rgba(99, 102, 241, 0.3);
         }
 
         /* Importance Section */
@@ -397,9 +365,9 @@
         }
 
         .importance-btn:hover {
-            background: rgba(245, 158, 11, 0.2);
-            border-color: rgba(245, 158, 11, 0.5);
-            transform: translateY(-2px);
+            background: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.4);
+            transform: translateY(-1px);
         }
 
         .importance-btn.selected {
@@ -425,7 +393,7 @@
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -434,33 +402,15 @@
             overflow: hidden;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
         .btn-primary {
             background: var(--gradient);
             color: white;
-            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 15px -3px rgba(99, 102, 241, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px -5px rgba(99, 102, 241, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px -3px rgba(99, 102, 241, 0.4);
         }
 
         .btn-secondary {
@@ -470,8 +420,8 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(148, 163, 184, 0.2);
-            transform: translateY(-2px);
+            background: rgba(148, 163, 184, 0.15);
+            transform: translateY(-1px);
         }
 
         .btn:disabled {
@@ -648,7 +598,7 @@
             border-radius: 100px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -659,27 +609,9 @@
             overflow: hidden;
         }
 
-        .share-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
         .share-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-
-        .share-btn:hover::before {
-            width: 300px;
-            height: 300px;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.25);
         }
 
         .share-facebook {
@@ -980,24 +912,9 @@
             background: var(--gradient-2);
         }
 
-        /* Floating Elements */
+        /* Floating Elements - removed animation */
         .floating-element {
-            position: absolute;
-            opacity: 0.1;
-            pointer-events: none;
-            animation: float 10s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
+            display: none;
         }
 
         /* Confetti Effect */
@@ -1307,23 +1224,6 @@
         function init() {
             document.getElementById('total').textContent = questions.length;
             showQuestion(0);
-
-            // Add floating elements
-            createFloatingElements();
-        }
-
-        function createFloatingElements() {
-            const emojis = ['🗳️', '📊', '🎯', '✨', '🏛️'];
-            for (let i = 0; i < 5; i++) {
-                const element = document.createElement('div');
-                element.className = 'floating-element';
-                element.textContent = emojis[i];
-                element.style.left = Math.random() * 100 + '%';
-                element.style.top = Math.random() * 100 + '%';
-                element.style.fontSize = '2rem';
-                element.style.animationDelay = i * 2 + 's';
-                document.querySelector('.bg-animation').appendChild(element);
-            }
         }
 
         function showQuestion(index) {
