@@ -77,9 +77,26 @@
     }
     </script>
 
-    <!-- AdSense -->
+    <!-- AdSense with Auto Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8023763343426742"
         crossorigin="anonymous"></script>
+
+    <!-- Auto Ads Configuration -->
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8023763343426742",
+            enable_page_level_ads: true,
+            overlays: { bottom: false }, // Disable overlay ads
+            anchor_ad_optimization: {
+                enable: true,
+                mobile_only: true // Only on mobile where they work better
+            },
+            vignette_ads: {
+                enable: true,
+                frequency_cap: 1 // Max 1 per session
+            }
+        });
+    </script>
 
     <!-- Google Analytics - replace GA_MEASUREMENT_ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
@@ -906,6 +923,58 @@
             opacity: 1;
         }
 
+        /* Remove text cursor on clickable elements */
+        .answer,
+        .importance-btn,
+        .btn,
+        .share-btn,
+        .party-result,
+        .topic-party,
+        .party-profile,
+        .topic-item {
+            cursor: pointer !important;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Remove focus outline and text cursor globally */
+        *:focus {
+            outline: none !important;
+            cursor: default;
+        }
+
+        /* Specific cursor fixes */
+        button,
+        .btn,
+        [onclick] {
+            cursor: pointer !important;
+        }
+
+        /* Prevent text selection on interactive elements */
+        .card,
+        .header,
+        .navigation,
+        .share-buttons,
+        .results {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Allow text selection only where needed */
+        .party-profile p,
+        .independence-note,
+        .question h3 {
+            user-select: text;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            cursor: text;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
@@ -922,6 +991,96 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: var(--gradient-2);
+        }
+
+        .premium-ad-slot {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(148, 163, 184, 0.02);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .premium-ad-slot::before {
+            content: 'Reklama';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.7rem;
+            color: #64748b;
+            background: rgba(148, 163, 184, 0.1);
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .sidebar-ad {
+            position: sticky;
+            top: 20px;
+            margin-left: 20px;
+            width: 300px;
+            z-index: 10;
+        }
+
+        .mobile-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .mobile-banner .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Responsive ad adjustments */
+        @media (max-width: 768px) {
+            .sidebar-ad {
+                display: none;
+            }
+
+            .premium-ad-slot {
+                margin: 20px -10px;
+                border-radius: 0;
+                min-height: 200px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 320px;
+                gap: 20px;
+                max-width: 1200px;
+            }
+
+            .main-content {
+                grid-column: 1;
+            }
+
+            .sidebar {
+                grid-column: 2;
+            }
+
+            .mobile-banner {
+                display: none;
+            }
         }
 
         /* Floating Elements - removed animation */
@@ -964,142 +1123,157 @@
     <div class="bg-animation"></div>
 
     <div class="container">
-        <div class="header">
-            <h1>🗳️ Volební kalkulačka 2025</h1>
-            <p>Volby do Parlamentu ČR - Objevte, která politická strana nejlépe odpovídá Vašim názorům</p>
+        <div class="main-content">
+            <div class="header">
+                <h1>🗳️ Volební kalkulačka 2025</h1>
+                <p>Volby do Parlamentu ČR - Objevte, která politická strana nejlépe odpovídá Vašim názorům</p>
 
-            <div class="independence-note">
-                <strong>✨ 100% nezávislá aplikace</strong> - Nejsme spojeni s žádnou politickou stranou. Výsledky jsou
-                založeny na oficiálních programech stran pro volby 2025.
-            </div>
-        </div>
-
-        <div class="ad-banner">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
-                data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        </div>
-
-        <div id="quiz-container" class="card">
-            <div class="progress-container">
-                <div class="progress">
-                    <div class="progress-bar" id="progress-bar"></div>
-                </div>
-                <p class="progress-text">Otázka <span id="current">1</span> z <span id="total">27</span></p>
-            </div>
-
-            <div id="questions"></div>
-
-            <div class="navigation">
-                <button class="btn btn-secondary" id="prev" onclick="prevQuestion()" disabled>
-                    <span>←</span> Předchozí
-                </button>
-                <button class="btn btn-primary" id="next" onclick="nextQuestion()" disabled>
-                    Další <span>→</span>
-                </button>
-            </div>
-        </div>
-
-        <div id="results" class="results">
-            <div class="card">
-                <h2
-                    style="font-size: 2rem; text-align: center; margin-bottom: 30px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                    🎯 Vaše výsledky
-                </h2>
-                <div id="results-content"></div>
-                <div class="navigation" style="margin-top: 40px;">
-                    <button class="btn btn-primary" onclick="showDetailedResults()">
-                        📊 Podrobné výsledky
-                    </button>
-                    <button class="btn btn-primary" onclick="restart()">
-                        🔄 Zkusit znovu
-                    </button>
+                <div class="independence-note">
+                    <strong>✨ 100% nezávislá aplikace</strong> - Nejsme spojeni s žádnou politickou stranou. Výsledky
+                    jsou založeny na oficiálních programech stran pro volby 2025.
                 </div>
             </div>
-        </div>
 
-        <!-- Detailed Results -->
-        <div id="detailed-results" class="results">
-            <div class="card">
-                <h2
-                    style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                    📊 Kompletní přehled všech stran
-                </h2>
-                <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
-                    Detailní srovnání vaší shody se všemi kandidujícími stranami
-                </p>
-                <div id="all-parties-results"></div>
+            <!-- PREMIUM POSITION 1: Above the fold - Highest value -->
+            <div class="premium-ad-slot">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
+                    data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            </div>
 
-                <div class="ad-banner" style="margin-top: 40px;">
+            <div id="quiz-container" class="card">
+                <div class="progress-container">
+                    <div class="progress">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <p class="progress-text">Otázka <span id="current">1</span> z <span id="total">27</span></p>
+                </div>
+
+                <div id="questions"></div>
+
+                <!-- PREMIUM POSITION 2: Mid-quiz interstitial -->
+                <div id="mid-quiz-ad" class="premium-ad-slot" style="display:none;">
                     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
-                        data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 </div>
 
-                <div class="navigation" style="margin-top: 40px;">
-                    <button class="btn btn-secondary" onclick="showBasicResults()">
-                        <span>←</span> Základní výsledky
+                <div class="navigation">
+                    <button class="btn btn-secondary" id="prev" onclick="prevQuestion()" disabled>
+                        <span>←</span> Předchozí
                     </button>
-                    <button class="btn btn-primary" onclick="showTopicAnalysis()">
-                        🔍 Analýza podle témat
+                    <button class="btn btn-primary" id="next" onclick="nextQuestion()" disabled>
+                        Další <span>→</span>
                     </button>
+                </div>
+            </div>
+
+            <div id="results" class="results">
+                <div class="card">
+                    <h2
+                        style="font-size: 2rem; text-align: center; margin-bottom: 30px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        🎯 Vaše výsledky
+                    </h2>
+                    <div id="results-content"></div>
+                    <div class="navigation" style="margin-top: 40px;">
+                        <button class="btn btn-primary" onclick="showDetailedResults()">
+                            📊 Podrobné výsledky
+                        </button>
+                        <button class="btn btn-primary" onclick="restart()">
+                            🔄 Zkusit znovu
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Results -->
+            <div id="detailed-results" class="results">
+                <div class="card">
+                    <h2
+                        style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        📊 Kompletní přehled všech stran
+                    </h2>
+                    <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
+                        Detailní srovnání vaší shody se všemi kandidujícími stranami
+                    </p>
+                    <div id="all-parties-results"></div>
+
+                    <!-- PREMIUM POSITION 3: In-content between results -->
+                    <div class="premium-ad-slot">
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
+                            data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    </div>
+
+                    <div class="navigation" style="margin-top: 40px;">
+                        <button class="btn btn-secondary" onclick="showBasicResults()">
+                            <span>←</span> Základní výsledky
+                        </button>
+                        <button class="btn btn-primary" onclick="showTopicAnalysis()">
+                            🔍 Analýza podle témat
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic Analysis -->
+            <div id="topic-analysis" class="results">
+                <div class="card">
+                    <h2
+                        style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        🔍 Tematická analýza
+                    </h2>
+                    <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
+                        Zjistěte, s kterými stranami se shodujete v jednotlivých oblastech
+                    </p>
+                    <div id="topic-breakdown"></div>
+
+                    <div class="navigation" style="margin-top: 40px;">
+                        <button class="btn btn-secondary" onclick="showDetailedResults()">
+                            <span>←</span> Podrobné výsledky
+                        </button>
+                        <button class="btn btn-primary" onclick="showPartyProfiles()">
+                            🏛️ Profily stran
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Party Profiles -->
+            <div id="party-profiles" class="results">
+                <div class="card">
+                    <h2
+                        style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        🏛️ Profily politických stran
+                    </h2>
+                    <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
+                        Podrobné informace o všech kandidujících stranách a jejich programech
+                    </p>
+                    <div id="profiles-content"></div>
+
+                    <div class="navigation" style="margin-top: 40px;">
+                        <button class="btn btn-secondary" onclick="showTopicAnalysis()">
+                            <span>←</span> Analýza témat
+                        </button>
+                        <button class="btn btn-primary" onclick="restart()">
+                            🔄 Zkusit znovu
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Topic Analysis -->
-        <div id="topic-analysis" class="results">
-            <div class="card">
-                <h2
-                    style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                    🔍 Tematická analýza
-                </h2>
-                <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
-                    Zjistěte, s kterými stranami se shodujete v jednotlivých oblastech
-                </p>
-                <div id="topic-breakdown"></div>
-
-                <div class="ad-banner" style="margin-top: 40px;">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
-                        data-ad-slot="3333333333" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                </div>
-
-                <div class="navigation" style="margin-top: 40px;">
-                    <button class="btn btn-secondary" onclick="showDetailedResults()">
-                        <span>←</span> Podrobné výsledky
-                    </button>
-                    <button class="btn btn-primary" onclick="showPartyProfiles()">
-                        🏛️ Profily stran
-                    </button>
-                </div>
+        <!-- SIDEBAR: Desktop sticky ads -->
+        <div class="sidebar">
+            <div class="sidebar-ad">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
+                    data-ad-slot="3333333333" data-ad-format="vertical" data-full-width-responsive="true"></ins>
             </div>
         </div>
+    </div>
 
-        <!-- Party Profiles -->
-        <div id="party-profiles" class="results">
-            <div class="card">
-                <h2
-                    style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                    🏛️ Profily politických stran
-                </h2>
-                <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
-                    Podrobné informace o všech kandidujících stranách a jejich programech
-                </p>
-                <div id="profiles-content"></div>
-
-                <div class="ad-banner" style="margin-top: 40px;">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
-                        data-ad-slot="4444444444" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                </div>
-
-                <div class="navigation" style="margin-top: 40px;">
-                    <button class="btn btn-secondary" onclick="showTopicAnalysis()">
-                        <span>←</span> Analýza témat
-                    </button>
-                    <button class="btn btn-primary" onclick="restart()">
-                        🔄 Zkusit znovu
-                    </button>
-                </div>
-            </div>
-        </div>
+    <!-- MOBILE: Bottom banner for mobile users -->
+    <div class="mobile-banner" id="mobile-banner" style="display:none;">
+        <button class="close-btn" onclick="closeMobileBanner()">&times;</button>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
+            data-ad-slot="4444444444" data-ad-format="banner" data-full-width-responsive="true"></ins>
     </div>
 
     <script>
@@ -1306,6 +1480,12 @@
         function nextQuestion() {
             if (currentQuestion < questions.length - 1) {
                 currentQuestion++;
+
+                // Show mid-quiz ad at strategic points
+                if (currentQuestion === 10 || currentQuestion === 20) {
+                    showMidQuizAd();
+                }
+
                 showQuestion(currentQuestion);
                 // Scroll to top to ensure ad visibility
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1314,6 +1494,83 @@
             } else {
                 showResults();
             }
+        }
+
+        function showMidQuizAd() {
+            const adElement = document.getElementById('mid-quiz-ad');
+            if (adElement) {
+                adElement.style.display = 'block';
+                // Initialize the ad
+                try {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                } catch (e) {
+                    console.log('AdSense not ready');
+                }
+
+                // Hide after a few seconds
+                setTimeout(() => {
+                    adElement.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function showMobileBanner() {
+            if (window.innerWidth <= 768) {
+                const banner = document.getElementById('mobile-banner');
+                if (banner && !localStorage.getItem('mobile-banner-closed')) {
+                    banner.style.display = 'block';
+                    try {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    } catch (e) {
+                        console.log('AdSense not ready');
+                    }
+                }
+            }
+        }
+
+        function closeMobileBanner() {
+            const banner = document.getElementById('mobile-banner');
+            if (banner) {
+                banner.style.display = 'none';
+                localStorage.setItem('mobile-banner-closed', 'true');
+            }
+        }
+
+        // Initialize AdSense ads with optimal timing
+        function initializeAds() {
+            try {
+                // Initialize all static ads
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                (adsbygoogle = window.adsbygoogle || []).push({});
+
+                // Show mobile banner after user engagement
+                setTimeout(showMobileBanner, 3000);
+
+                // Track ad performance
+                trackEvent('ads_initialized', 'Monetization', 'AdSense');
+
+            } catch (e) {
+                console.log('AdSense not loaded yet');
+            }
+        }
+
+        // Enhanced ad revenue tracking
+        function trackAdPerformance() {
+            // Track which ads are visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const adSlot = entry.target.getAttribute('data-ad-slot');
+                        trackEvent('ad_viewed', 'Monetization', adSlot);
+                    }
+                });
+            });
+
+            // Observe all ad elements
+            document.querySelectorAll('.adsbygoogle').forEach(ad => {
+                observer.observe(ad);
+            });
         }
 
         function prevQuestion() {
@@ -1829,9 +2086,15 @@ Volební kalkulačka obsahuje 27 otázek a ukáže ti, která z kandidujících 
         // Initialize
         init();
 
-        // Initialize ads when page loads
+        // Initialize ads when page loads with optimal timing
         window.addEventListener('load', () => {
             setTimeout(initializeAds, 1000);
+            setTimeout(trackAdPerformance, 2000);
+        });
+
+        // Clear mobile banner preference on new session
+        window.addEventListener('beforeunload', () => {
+            localStorage.removeItem('mobile-banner-closed');
         });
     </script>
 </body>
