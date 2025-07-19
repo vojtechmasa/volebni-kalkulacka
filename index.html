@@ -4,33 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volební kalkulačka ČR 2025 - Zjistěte, která strana je Vám nejblíže | 27 otázek</title>
+    <title>Volební kalkulačka 2025 - Volby do Parlamentu ČR | 27 otázek</title>
     <meta name="description"
         content="Nejpřesnější volební kalkulačka pro volby do Parlamentu ČR 2025. Odpovězte na 27 otázek s váženými odpověďmi a zjistěte, která z 12 kandidujících stran je Vám nejblíže. Včetně profilů stran, analýzy podle témat a možnosti sdílení výsledků.">
     <meta name="keywords"
         content="volební kalkulačka 2025, volby do parlamentu ČR, politické strany, ANO, SPOLU, Piráti, SPD, STAN, Stačilo, Motoristé, Přísaha, GEN, Volt, Voluntia, politický test, volební test, česká politika">
-    <meta name="author" content="Volební kalkulačka ČR">
+    <meta name="author" content="Volební kalkulačka - Volby do Parlamentu ČR">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://volebnikalkulacka.org">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://volebnikalkulacka.org">
-    <meta property="og:title" content="Volební kalkulačka ČR 2025 - Zjistěte svou politickou shodu">
+    <meta property="og:title" content="Volební kalkulačka 2025 - Volby do Parlamentu ČR">
     <meta property="og:description"
-        content="Nejpřesnější volební kalkulačka s 27 otázkami. Zjistěte, která z 12 kandidujících stran je Vám nejblíže. Včetně systému vážení otázek a detailní analýzy výsledků.">
+        content="Nejpřesnější volební kalkulačka pro parlamentní volby 2025. Zjistěte, která z 12 kandidujících stran je Vám nejblíže pomocí 27 otázek s váženým hodnocením.">
     <meta property="og:image" content="https://volebnikalkulacka.org/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Volební kalkulačka ČR 2025">
+    <meta property="og:site_name" content="Volební kalkulačka - Parlamentní volby 2025">
     <meta property="og:locale" content="cs_CZ">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://volebnikalkulacka.org">
-    <meta name="twitter:title" content="Volební kalkulačka ČR 2025 - Zjistěte svou politickou shodu">
+    <meta name="twitter:title" content="Volební kalkulačka 2025 - Volby do Parlamentu ČR">
     <meta name="twitter:description"
-        content="27 otázek, 12 stran, systém vážení. Nejpřesnější volební kalkulačka pro volby 2025.">
+        content="27 otázek, 12 stran, systém vážení. Zjistěte svou politickou shodu pro parlamentní volby 2025.">
     <meta name="twitter:image" content="https://volebnikalkulacka.org/twitter-image.jpg">
     <meta name="twitter:creator" content="@volebnikalkulacka">
 
@@ -48,7 +48,7 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Volební kalkulačka ČR 2025",
+      "name": "Volební kalkulačka 2025 - Volby do Parlamentu ČR",
       "description": "Nejpřesnější volební kalkulačka pro volby do Parlamentu ČR 2025 s 27 otázkami a systémem vážení odpověďí",
       "url": "https://volebnikalkulacka.org",
       "applicationCategory": "EducationalApplication",
@@ -60,7 +60,7 @@
       },
       "creator": {
         "@type": "Organization",
-        "name": "Volební kalkulačka ČR"
+        "name": "Volební kalkulačka - Parlamentní volby"
       },
       "keywords": "volební kalkulačka, volby 2025, české politické strany, politický test",
       "inLanguage": "cs",
@@ -959,8 +959,8 @@
 
     <div class="container">
         <div class="header">
-            <h1>🗳️ Volební kalkulačka ČR 2025</h1>
-            <p>Objevte, která politická strana nejlépe odpovídá Vašim názorům</p>
+            <h1>🗳️ Volební kalkulačka 2025</h1>
+            <p>Volby do Parlamentu ČR - Objevte, která politická strana nejlépe odpovídá Vašim názorům</p>
 
             <div class="independence-note">
                 <strong>✨ 100% nezávislá aplikace</strong> - Nejsme spojeni s žádnou politickou stranou. Výsledky jsou
@@ -1638,21 +1638,31 @@
 
         function shareToFacebook() {
             const summary = getResultsSummary();
-            const text = `Zjistil(a) jsem svou politickou shodu pomocí Volební kalkulačky ČR 2025! Má nejbližší strana: ${summary.topParty} s ${summary.topScore}% shodou.`;
+            const text = `Volební kalkulačka pro parlamentní volby 2025: Moje nejbližší shoda je ${summary.topParty} (${summary.topScore}%). Vyzkoušejte si také!`;
 
             trackEvent('share', 'Social', 'Facebook');
 
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(summary.url)}&quote=${encodeURIComponent(text)}`;
-            window.open(facebookUrl, '_blank', 'width=600,height=400');
+            // Facebook Share Dialog API - spolehlivější než sharer.php
+            if (window.FB) {
+                FB.ui({
+                    method: 'share',
+                    href: summary.url,
+                    quote: text,
+                }, function (response) { });
+            } else {
+                // Fallback na základní sdílení bez textu (Facebook často ignoruje quote parametr)
+                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(summary.url)}`;
+                window.open(facebookUrl, '_blank', 'width=600,height=400');
+            }
         }
 
         function shareToTwitter() {
             const summary = getResultsSummary();
-            const text = `🗳️ Volební kalkulačka ČR 2025: Má nejbližší shoda je s ${summary.topParty} (${summary.topScore}%)! 
+            const text = `🗳️ Volební kalkulačka - parlamentní volby 2025: Moje nejbližší shoda je ${summary.topParty} (${summary.topScore}%)! 
             
 Top 3: ${summary.top3.join(', ')}
 
-Zjistěte svou politickou shodu také:`;
+Zjistěte svou politickou shodu:`;
 
             const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(summary.url)}`;
             window.open(twitterUrl, '_blank', 'width=600,height=400');
@@ -1660,15 +1670,15 @@ Zjistěte svou politickou shodu také:`;
 
         function shareToWhatsApp() {
             const summary = getResultsSummary();
-            const text = `🗳️ Volební kalkulačka ČR 2025
+            const text = `🗳️ Volební kalkulačka - parlamentní volby 2025
 
-Má nejbližší politická shoda:
+Moje nejbližší politická shoda:
 ${summary.topParty} - ${summary.topScore}%
 
 Top 3 strany:
 ${summary.top3.join('\n')}
 
-Zkus si také: ${summary.url}`;
+Vyzkoušej také: ${summary.url}`;
 
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank');
@@ -1676,10 +1686,10 @@ Zkus si také: ${summary.url}`;
 
         function shareViaEmail() {
             const summary = getResultsSummary();
-            const subject = 'Moje výsledky z Volební kalkulačky ČR 2025';
+            const subject = 'Moje výsledky z Volební kalkulačky pro parlamentní volby 2025';
             const body = `Ahoj!
 
-Právě jsem si vyzkoušel(a) Volební kalkulačku ČR 2025 a zjistil(a) svou politickou shodu.
+Právě jsem si vyzkoušel(a) Volební kalkulačku pro parlamentní volby 2025 a zjistil(a) svou politickou shodu.
 
 Moje výsledky:
 🎯 Nejbližší shoda: ${summary.topParty} (${summary.topScore}%)
@@ -1689,7 +1699,7 @@ ${summary.top3.join('\n')}
 
 Vyzkoušej si to také: ${summary.url}
 
-Volební kalkulačka obsahuje 27 otázek a ukáže ti, která z kandidujících stran je ti nejblíže!`;
+Volební kalkulačka obsahuje 27 otázek a ukáže ti, která z kandidujících stran do Parlamentu ČR je ti nejblíže!`;
 
             const emailUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = emailUrl;
@@ -1700,13 +1710,13 @@ Volební kalkulačka obsahuje 27 otázek a ukáže ti, která z kandidujících 
             const copyBtn = document.getElementById('copy-btn');
 
             // Create detailed text for clipboard
-            const textToCopy = `🗳️ Volební kalkulačka ČR 2025
+            const textToCopy = `🗳️ Volební kalkulačka - parlamentní volby 2025
 
-Má nejbližší politická shoda: ${summary.topParty} (${summary.topScore}%)
+Moje nejbližší politická shoda: ${summary.topParty} (${summary.topScore}%)
 
 Top 3: ${summary.top3.join(', ')}
 
-Zjisti svou shodu také: ${summary.url}`;
+Zjisti svou shodu: ${summary.url}`;
 
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 // Modern clipboard API
