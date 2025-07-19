@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volební kalkulačka ČR 2025 - Zjistěte, která strana je Vám nejblíže | 27 otázek</title>
-    <meta name="description" content="Nejpřesnější volební kalkulačka pro volby do Parlamentu ČR 2025. Odpovězte na 27 otázek s váženými odpověďmi a zjistěte, která z 12 kandidujících stran je Vám nejblíže. Včetně profilů stran, analýzy podle témat a možnosti sdílení výsledků.">
-    <meta name="keywords" content="volební kalkulačka 2025, volby do parlamentu ČR, politické strany, ANO, SPOLU, Piráti, SPD, STAN, Stačilo, Motoristé, Přísaha, GEN, Volt, Voluntia, politický test, volební test, česká politika">
+    <meta name="description"
+        content="Nejpřesnější volební kalkulačka pro volby do Parlamentu ČR 2025. Odpovězte na 27 otázek s váženými odpověďmi a zjistěte, která z 12 kandidujících stran je Vám nejblíže. Včetně profilů stran, analýzy podle témat a možnosti sdílení výsledků.">
+    <meta name="keywords"
+        content="volební kalkulačka 2025, volby do parlamentu ČR, politické strany, ANO, SPOLU, Piráti, SPD, STAN, Stačilo, Motoristé, Přísaha, GEN, Volt, Voluntia, politický test, volební test, česká politika">
     <meta name="author" content="Volební kalkulačka ČR">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://volebnikalkulacka.org">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://volebnikalkulacka.org">
     <meta property="og:title" content="Volební kalkulačka ČR 2025 - Zjistěte svou politickou shodu">
-    <meta property="og:description" content="Nejpřesnější volební kalkulačka s 27 otázkami. Zjistěte, která z 12 kandidujících stran je Vám nejblíže. Včetně systému vážení otázek a detailní analýzy výsledků.">
+    <meta property="og:description"
+        content="Nejpřesnější volební kalkulačka s 27 otázkami. Zjistěte, která z 12 kandidujících stran je Vám nejblíže. Včetně systému vážení otázek a detailní analýzy výsledků.">
     <meta property="og:image" content="https://volebnikalkulacka.org/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Volební kalkulačka ČR 2025">
     <meta property="og:locale" content="cs_CZ">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://volebnikalkulacka.org">
     <meta name="twitter:title" content="Volební kalkulačka ČR 2025 - Zjistěte svou politickou shodu">
-    <meta name="twitter:description" content="27 otázek, 12 stran, systém vážení. Nejpřesnější volební kalkulačka pro volby 2025.">
+    <meta name="twitter:description"
+        content="27 otázek, 12 stran, systém vážení. Nejpřesnější volební kalkulačka pro volby 2025.">
     <meta name="twitter:image" content="https://volebnikalkulacka.org/twitter-image.jpg">
     <meta name="twitter:creator" content="@volebnikalkulacka">
-    
+
     <!-- Additional SEO -->
-    <meta name="theme-color" content="#1976d2">
+    <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Volební kalkulačka 2025">
-    
+
     <!-- Google AdSense Verification -->
     <meta name="google-adsense-account" content="ca-pub-8023763343426742">
-    
+
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
@@ -65,191 +70,1104 @@
       }
     }
     </script>
-    
+
     <!-- AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8023763343426742" crossorigin="anonymous"></script>
-    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8023763343426742"
+        crossorigin="anonymous"></script>
+
     <!-- Google Analytics - replace GA_MEASUREMENT_ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
     </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <style>
-        body { font-family: Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .header h1 { color: #1976d2; margin-bottom: 10px; }
-        .question { display: none; }
-        .question.active { display: block; }
-        .answers { margin: 20px 0; }
-        .answer { padding: 15px; margin: 10px 0; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
-        .answer:hover { background: #e3f2fd; border-color: #2196f3; }
-        .answer.selected { background: #2196f3; color: white; }
-        .importance { margin-top: 20px; padding: 15px; background: #fff3e0; border-radius: 8px; border: 1px solid #ffcc02; }
-        .importance h4 { margin-bottom: 10px; color: #e65100; font-size: 14px; }
-        .importance-options { display: flex; gap: 8px; flex-wrap: wrap; }
-        .importance-btn { padding: 8px 12px; border: 2px solid #ffcc02; background: white; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s; }
-        .importance-btn:hover { background: #fff3e0; }
-        .importance-btn.selected { background: #ff9800; border-color: #f57c00; color: white; font-weight: bold; }
-        .navigation { display: flex; justify-content: space-between; margin-top: 30px; }
-        .btn { padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
-        .btn-primary { background: #2196f3; color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-        .progress { width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; margin-bottom: 20px; }
-        .progress-bar { height: 100%; background: #4caf50; border-radius: 4px; transition: width 0.3s; }
-        .results { display: none; }
-        .results.active { display: block; }
-        .detailed-results { display: none; }
-        .detailed-results.active { display: block; }
-        .topic-analysis { display: none; }
-        .topic-analysis.active { display: block; }
-        .party-profiles { display: none; }
-        .party-profiles.active { display: block; }
-        .party-result { padding: 15px; margin: 10px 0; background: #f8f9fa; border-radius: 8px; }
-        .party-header { display: flex; justify-content: space-between; align-items: center; }
-        .party-name { font-weight: bold; }
-        .party-score { font-size: 18px; color: #4caf50; font-weight: bold; }
-        .party-bar { width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; margin-top: 8px; overflow: hidden; }
-        .party-bar-fill { height: 100%; background: linear-gradient(90deg, #4caf50, #45a049); border-radius: 4px; transition: width 1s ease; }
-        .topic-item { background: #fff; padding: 15px; margin: 10px 0; border-radius: 8px; border-left: 4px solid #2196f3; }
-        .topic-title { font-weight: bold; color: #1976d2; margin-bottom: 10px; }
-        .topic-parties { display: flex; flex-wrap: wrap; gap: 8px; }
-        .topic-party { padding: 4px 8px; background: #e3f2fd; border-radius: 12px; font-size: 12px; color: #1565c0; }
-        .share-section { background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center; }
-        .share-buttons { display: flex; gap: 15px; justify-content: center; margin: 15px 0; flex-wrap: wrap; }
-        .share-btn { padding: 12px 20px; border: none; border-radius: 25px; color: white; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
-        .share-btn:hover { transform: translateY(-2px); text-decoration: none; color: white; }
-        .share-facebook { background: #1877f2; }
-        .share-twitter { background: #1da1f2; }
-        .share-whatsapp { background: #25d366; }
-        .share-email { background: #d44638; }
-        .share-copy { background: #6c757d; }
-        .nav-buttons { text-align: center; margin: 30px 0; }
-        .nav-buttons .btn { margin: 0 10px; }
-        .result-summary { background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 15px 0; }
-        .result-summary h4 { color: #2e7d32; margin-bottom: 10px; }
-        .result-summary p { margin: 5px 0; color: #1b5e20; }
-        .ad-banner { text-align: center; padding: 20px; background: #f0f0f0; border-radius: 8px; margin: 20px 0; }
-        .top-result { background: #e8f5e8; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
-        .top-result h3 { color: #2e7d32; margin-bottom: 10px; }
-        .top-result .score { font-size: 24px; font-weight: bold; color: #1b5e20; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #ec4899;
+            --secondary-dark: #db2777;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            font-weight: 300;
+        }
+
+        .independence-note {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease 0.3s both;
+        }
+
+        .independence-note strong {
+            color: var(--primary-light);
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient);
+            opacity: 0.8;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 30px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 12px;
+            background: rgba(148, 163, 184, 0.1);
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 100px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .progress-text span {
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        /* Questions */
+        .question {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .question.active {
+            display: block;
+        }
+
+        .question h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            color: #f1f5f9;
+        }
+
+        /* Answers */
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .answer {
+            padding: 20px 25px;
+            background: rgba(99, 102, 241, 0.05);
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .answer::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .answer:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+        }
+
+        .answer:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .answer.selected {
+            background: var(--gradient);
+            border-color: transparent;
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Importance Section */
+        .importance {
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+
+        .importance h4 {
+            color: #fbbf24;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .importance-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .importance-btn {
+            padding: 10px 20px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            border-radius: 100px;
+            color: #fbbf24;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .importance-btn:hover {
+            background: rgba(245, 158, 11, 0.2);
+            border-color: rgba(245, 158, 11, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .importance-btn.selected {
+            background: var(--warning);
+            border-color: var(--warning);
+            color: white;
+            font-weight: 600;
+            transform: scale(1.05);
+        }
+
+        /* Navigation */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(148, 163, 184, 0.1);
+            color: #cbd5e1;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(148, 163, 184, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Results */
+        .results {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .top-result {
+            background: var(--gradient);
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-result::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .top-result h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-result .party-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-result .score {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Party Results */
+        .party-result {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .party-result:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateX(5px);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .party-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .party-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #f1f5f9;
+        }
+
+        .party-score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .party-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(148, 163, 184, 0.1);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .party-bar-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 100px;
+            transition: width 1.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .party-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        /* Share Section */
+        .share-section {
+            background: rgba(236, 72, 153, 0.05);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .share-section h4 {
+            color: #f472b6;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .share-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 100px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .share-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .share-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .share-facebook {
+            background: #1877f2;
+        }
+
+        .share-twitter {
+            background: #1da1f2;
+        }
+
+        .share-whatsapp {
+            background: #25d366;
+        }
+
+        .share-email {
+            background: #ea4335;
+        }
+
+        .share-copy {
+            background: var(--gradient-2);
+        }
+
+        /* Ad Banner */
+        .ad-banner {
+            background: rgba(148, 163, 184, 0.05);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-banner::before {
+            content: 'Reklama';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.75rem;
+            color: #64748b;
+            background: rgba(148, 163, 184, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* Topic Analysis */
+        .topic-item {
+            background: rgba(79, 70, 229, 0.05);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: rgba(79, 70, 229, 0.1);
+            transform: translateX(5px);
+        }
+
+        .topic-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 15px;
+        }
+
+        .topic-parties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .topic-party {
+            padding: 8px 16px;
+            background: rgba(79, 70, 229, 0.1);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: #a5b4fc;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .topic-party:hover {
+            background: rgba(79, 70, 229, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Party Profiles */
+        .party-profile {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .party-profile:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+        }
+
+        .party-profile h3 {
+            color: var(--primary-light);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .party-profile p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .party-profile strong {
+            color: #f1f5f9;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .question h3 {
+                font-size: 1.3rem;
+            }
+
+            .answer {
+                font-size: 1rem;
+                padding: 15px 20px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .top-result .party-name {
+                font-size: 1.8rem;
+            }
+
+            .top-result .score {
+                font-size: 2.5rem;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+
+            .share-btn {
+                width: 100%;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Success Animation */
+        .copy-success {
+            animation: successPulse 0.5s ease;
+        }
+
+        @keyframes successPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: rgba(30, 41, 59, 0.95);
+            color: #f1f5f9;
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.875rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-2);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: fixed;
+            top: -10px;
+            z-index: 999;
+            animation: fall linear;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Glow Effect */
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px -10px var(--primary);
+            }
+
+            to {
+                box-shadow: 0 0 20px 10px var(--primary);
+            }
+        }
     </style>
 </head>
+
 <body>
+    <div class="bg-animation"></div>
+
     <div class="container">
         <div class="header">
             <h1>🗳️ Volební kalkulačka ČR 2025</h1>
-            <p>Zjistěte, která z kandidujících stran je Vám nejblíže!</p>
-            
-            <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 14px; border-left: 4px solid #2196f3;">
-                <strong>ℹ️ Nezávislost:</strong> Tato aplikace není sponzorována žádnou politickou stranou a je zcela nezávislá. Výsledky jsou založeny na veřejně dostupných programech stran.
+            <p>Objevte, která politická strana nejlépe odpovídá vašim názorům</p>
+
+            <div class="independence-note">
+                <strong>✨ 100% nezávislá aplikace</strong> - Nejsme spojeni s žádnou politickou stranou. Výsledky jsou
+                založeny na oficiálních programech stran pro volby 2025.
             </div>
         </div>
 
         <div class="ad-banner">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-8023763343426742"
-                 data-ad-slot="1111111111"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
+                data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
         </div>
 
         <div id="quiz-container" class="card">
-            <div class="progress">
-                <div class="progress-bar" id="progress-bar"></div>
+            <div class="progress-container">
+                <div class="progress">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <p class="progress-text">Otázka <span id="current">1</span> z <span id="total">27</span></p>
             </div>
-            <p>Otázka <span id="current">1</span> z <span id="total">27</span></p>
-            
+
             <div id="questions"></div>
 
             <div class="navigation">
-                <button class="btn btn-secondary" id="prev" onclick="prevQuestion()" disabled>← Předchozí</button>
-                <button class="btn btn-primary" id="next" onclick="nextQuestion()" disabled>Další →</button>
+                <button class="btn btn-secondary" id="prev" onclick="prevQuestion()" disabled>
+                    <span>←</span> Předchozí
+                </button>
+                <button class="btn btn-primary" id="next" onclick="nextQuestion()" disabled>
+                    Další <span>→</span>
+                </button>
             </div>
         </div>
 
         <div id="results" class="results">
             <div class="card">
-                <h2>🎯 Vaše výsledky</h2>
+                <h2
+                    style="font-size: 2.5rem; text-align: center; margin-bottom: 40px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    🎯 Vaše výsledky
+                </h2>
                 <div id="results-content"></div>
-                <div class="nav-buttons">
-                    <button class="btn btn-primary" onclick="showDetailedResults()">📊 Podrobné výsledky všech stran</button>
-                    <button class="btn btn-primary" onclick="restart()">🔄 Zkusit znovu</button>
+                <div class="navigation" style="margin-top: 40px;">
+                    <button class="btn btn-primary" onclick="showDetailedResults()">
+                        📊 Podrobné výsledky
+                    </button>
+                    <button class="btn btn-primary" onclick="restart()">
+                        🔄 Zkusit znovu
+                    </button>
                 </div>
             </div>
         </div>
 
         <!-- Detailed Results -->
-        <div id="detailed-results" class="detailed-results">
+        <div id="detailed-results" class="results">
             <div class="card">
-                <h2>📊 Podrobné výsledky všech stran</h2>
-                <p style="color: #666; margin-bottom: 20px;">Zde vidíte, jak se shodujete se všemi kandidujícími stranami včetně grafického znázornění.</p>
+                <h2
+                    style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    📊 Kompletní přehled všech stran
+                </h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
+                    Detailní srovnání vaší shody se všemi kandidujícími stranami
+                </p>
                 <div id="all-parties-results"></div>
-                
-                <div class="ad-banner">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8023763343426742"
-                         data-ad-slot="2222222222"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
+
+                <div class="ad-banner" style="margin-top: 40px;">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
+                        data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 </div>
-                
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="showBasicResults()">← Zpět na základní výsledky</button>
-                    <button class="btn btn-primary" onclick="showTopicAnalysis()">🔍 Analýza podle témat</button>
+
+                <div class="navigation" style="margin-top: 40px;">
+                    <button class="btn btn-secondary" onclick="showBasicResults()">
+                        <span>←</span> Základní výsledky
+                    </button>
+                    <button class="btn btn-primary" onclick="showTopicAnalysis()">
+                        🔍 Analýza podle témat
+                    </button>
                 </div>
             </div>
         </div>
 
         <!-- Topic Analysis -->
-        <div id="topic-analysis" class="topic-analysis">
+        <div id="topic-analysis" class="results">
             <div class="card">
-                <h2>🔍 Analýza podle témat</h2>
-                <p style="color: #666; margin-bottom: 20px;">Podívejte se, ve kterých oblastech se shodujete s různými stranami nejvíce.</p>
+                <h2
+                    style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    🔍 Tematická analýza
+                </h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
+                    Zjistěte, s kterými stranami se shodujete v jednotlivých oblastech
+                </p>
                 <div id="topic-breakdown"></div>
-                
-                <div class="ad-banner">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8023763343426742"
-                         data-ad-slot="3333333333"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
+
+                <div class="ad-banner" style="margin-top: 40px;">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
+                        data-ad-slot="3333333333" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 </div>
-                
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="showDetailedResults()">← Zpět na podrobné výsledky</button>
-                    <button class="btn btn-primary" onclick="showPartyProfiles()">🏛️ Profily stran</button>
+
+                <div class="navigation" style="margin-top: 40px;">
+                    <button class="btn btn-secondary" onclick="showDetailedResults()">
+                        <span>←</span> Podrobné výsledky
+                    </button>
+                    <button class="btn btn-primary" onclick="showPartyProfiles()">
+                        🏛️ Profily stran
+                    </button>
                 </div>
             </div>
         </div>
 
         <!-- Party Profiles -->
-        <div id="party-profiles" class="party-profiles">
+        <div id="party-profiles" class="results">
             <div class="card">
-                <h2>🏛️ Profily politických stran</h2>
-                <p style="color: #666; margin-bottom: 20px;">Detailní informace o kandidujících stranách a jejich programech.</p>
+                <h2
+                    style="font-size: 2.5rem; text-align: center; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    🏛️ Profily politických stran
+                </h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 40px; font-size: 1.1rem;">
+                    Podrobné informace o všech kandidujících stranách a jejich programech
+                </p>
                 <div id="profiles-content"></div>
-                
-                <div class="ad-banner">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8023763343426742"
-                         data-ad-slot="4444444444"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
+
+                <div class="ad-banner" style="margin-top: 40px;">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8023763343426742"
+                        data-ad-slot="4444444444" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 </div>
-                
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="showTopicAnalysis()">← Zpět na analýzu témat</button>
-                    <button class="btn btn-primary" onclick="restart()">🔄 Zkusit znovu</button>
+
+                <div class="navigation" style="margin-top: 40px;">
+                    <button class="btn btn-secondary" onclick="showTopicAnalysis()">
+                        <span>←</span> Analýza témat
+                    </button>
+                    <button class="btn btn-primary" onclick="restart()">
+                        🔄 Zkusit znovu
+                    </button>
                 </div>
             </div>
         </div>
@@ -258,7 +1176,7 @@
     <script>
         const parties = {
             'ANO': 'ANO 2011',
-            'SPOLU': 'SPOLU (ODS + TOP 09 + KDU-ČSL)', 
+            'SPOLU': 'SPOLU (ODS + TOP 09 + KDU-ČSL)',
             'Piráti': 'Piráti + Zelení',
             'SPD': 'SPD + PRO + Trikolora + Svobodní',
             'STAN': 'Starostové a nezávislí',
@@ -389,12 +1307,29 @@
         function init() {
             document.getElementById('total').textContent = questions.length;
             showQuestion(0);
+
+            // Add floating elements
+            createFloatingElements();
+        }
+
+        function createFloatingElements() {
+            const emojis = ['🗳️', '📊', '🎯', '✨', '🏛️'];
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.textContent = emojis[i];
+                element.style.left = Math.random() * 100 + '%';
+                element.style.top = Math.random() * 100 + '%';
+                element.style.fontSize = '2rem';
+                element.style.animationDelay = i * 2 + 's';
+                document.querySelector('.bg-animation').appendChild(element);
+            }
         }
 
         function showQuestion(index) {
             const container = document.getElementById('questions');
             const question = questions[index];
-            
+
             container.innerHTML = `
                 <div class="question active">
                     <h3>${question.text}</h3>
@@ -417,13 +1352,13 @@
                     </div>
                 </div>
             `;
-            
+
             // Restore previous selections
             if (answers[index] !== undefined) {
                 const answerElements = container.querySelectorAll('.answer');
                 answerElements[5 - answers[index]].classList.add('selected');
             }
-            
+
             if (importance[index] !== undefined) {
                 const importanceElements = container.querySelectorAll('.importance-btn');
                 importanceElements.forEach(el => el.classList.remove('selected'));
@@ -431,7 +1366,7 @@
             } else {
                 importance[index] = 3; // Default
             }
-            
+
             document.getElementById('current').textContent = index + 1;
             updateProgress();
             updateButtons();
@@ -439,19 +1374,19 @@
 
         function selectAnswer(value) {
             answers[currentQuestion] = value;
-            
+
             document.querySelectorAll('.answer').forEach(a => a.classList.remove('selected'));
             event.target.classList.add('selected');
-            
+
             // Track answer selection
             trackEvent('answer_selected', 'Quiz', `Q${currentQuestion + 1}_${value}`);
-            
+
             updateButtons();
         }
 
         function selectImportance(weight) {
             importance[currentQuestion] = weight;
-            
+
             document.querySelectorAll('.importance-btn').forEach(btn => btn.classList.remove('selected'));
             event.target.classList.add('selected');
         }
@@ -480,17 +1415,17 @@
         function updateButtons() {
             document.getElementById('prev').disabled = currentQuestion === 0;
             document.getElementById('next').disabled = !answers.hasOwnProperty(currentQuestion);
-            
+
             if (currentQuestion === questions.length - 1) {
-                document.getElementById('next').textContent = 'Zobrazit výsledky';
+                document.getElementById('next').innerHTML = 'Zobrazit výsledky <span>→</span>';
             } else {
-                document.getElementById('next').textContent = 'Další →';
+                document.getElementById('next').innerHTML = 'Další <span>→</span>';
             }
         }
 
         function calculateResults() {
             const scores = {};
-            
+
             Object.keys(parties).forEach(party => {
                 scores[party] = 0;
             });
@@ -502,7 +1437,7 @@
                     const userAnswer = answers[index];
                     const questionWeight = importance[index] || 3;
                     totalWeight += questionWeight;
-                    
+
                     Object.keys(question.parties).forEach(party => {
                         const partyAnswer = question.parties[party];
                         const difference = Math.abs(userAnswer - partyAnswer);
@@ -526,30 +1461,28 @@
 
         function showResults() {
             const scores = calculateResults();
-            const sortedResults = Object.entries(scores).sort(([,a], [,b]) => b - a);
-            
+            const sortedResults = Object.entries(scores).sort(([, a], [, b]) => b - a);
+
             // Track quiz completion
             trackEvent('quiz_completed', 'Quiz', `${parties[sortedResults[0][0]]}_${sortedResults[0][1]}%`);
-            
+
+            // Add confetti effect
+            createConfetti();
+
             document.getElementById('quiz-container').style.display = 'none';
             hideAllResults();
             document.getElementById('results').classList.add('active');
-            
+
             const content = document.getElementById('results-content');
             content.innerHTML = `
                 <div class="top-result">
                     <h3>🎯 Vaše nejbližší shoda</h3>
-                    <div class="score">${parties[sortedResults[0][0]]}</div>
+                    <div class="party-name">${parties[sortedResults[0][0]]}</div>
                     <div class="score">${sortedResults[0][1]}% shoda</div>
                 </div>
                 
                 <div class="share-section">
                     <h4>📢 Sdílejte své výsledky</h4>
-                    <div class="result-summary">
-                        <h4>Váš výsledek:</h4>
-                        <p><strong>${parties[sortedResults[0][0]]}</strong> - ${sortedResults[0][1]}% shoda</p>
-                        <p>Top 3: ${sortedResults.slice(0,3).map(([party, score]) => `${parties[party]} (${score}%)`).join(', ')}</p>
-                    </div>
                     <div class="share-buttons">
                         <button class="share-btn share-facebook" onclick="shareToFacebook()">
                             📘 Facebook
@@ -569,30 +1502,53 @@
                     </div>
                 </div>
                 
-                <h4>📊 Top 5 nejbližších stran:</h4>
-            ` + sortedResults.slice(0, 5).map(([party, score]) => `
-                <div class="party-result">
+                <h4 style="font-size: 1.5rem; margin: 30px 0 20px; color: #f1f5f9;">📊 Top 5 nejbližších stran:</h4>
+            ` + sortedResults.slice(0, 5).map(([party, score], index) => `
+                <div class="party-result" style="animation-delay: ${index * 0.1}s">
                     <div class="party-header">
                         <div class="party-name">${parties[party]}</div>
                         <div class="party-score">${score}%</div>
                     </div>
                     <div class="party-bar">
-                        <div class="party-bar-fill" style="width: ${score}%"></div>
+                        <div class="party-bar-fill" style="width: 0%; animation: fillBar 1.5s ease ${index * 0.1}s forwards"></div>
                     </div>
                 </div>
             `).join('');
+
+            // Animate progress bars
+            setTimeout(() => {
+                document.querySelectorAll('.party-bar-fill').forEach((bar, index) => {
+                    bar.style.width = sortedResults[index][1] + '%';
+                });
+            }, 100);
+        }
+
+        function createConfetti() {
+            const colors = ['#6366f1', '#ec4899', '#10b981', '#f59e0b', '#ef4444'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 5000);
+            }
         }
 
         function showDetailedResults() {
             const scores = calculateResults();
-            const sortedResults = Object.entries(scores).sort(([,a], [,b]) => b - a);
-            
+            const sortedResults = Object.entries(scores).sort(([, a], [, b]) => b - a);
+
             hideAllResults();
             document.getElementById('detailed-results').classList.add('active');
-            
+
             const content = document.getElementById('all-parties-results');
-            content.innerHTML = sortedResults.map(([party, score]) => `
-                <div class="party-result">
+            content.innerHTML = sortedResults.map(([party, score], index) => `
+                <div class="party-result" style="animation-delay: ${index * 0.05}s">
                     <div class="party-header">
                         <div class="party-name">${parties[party]}</div>
                         <div class="party-score">${score}%</div>
@@ -607,7 +1563,7 @@
         function showTopicAnalysis() {
             hideAllResults();
             document.getElementById('topic-analysis').classList.add('active');
-            
+
             const topics = {
                 'Ekonomika': ['Měl by stát významně zvýšit minimální mzdu?', 'Měly by být sníženy daně pro nejbohatší občany?', 'Měla by být zvýšena progresivita daňového systému?'],
                 'Evropská unie': ['Měla by Česká republika vystoupit z Evropské unie?', 'Měla by Česká republika přijmout euro do roku 2030?'],
@@ -616,15 +1572,15 @@
                 'Lidská práva': ['Měla by být povolena adopce dětí homosexuálními páry?', 'Měla by být povolena registrovaná partnerství pro stejnopohlavní páry?'],
                 'Bezpečnost': ['Měla by být ukončena vojenská podpora Ukrajiny?', 'Měla by být omezena migrace do České republiky?']
             };
-            
+
             const content = document.getElementById('topic-breakdown');
-            content.innerHTML = Object.entries(topics).map(([topic, questions]) => `
-                <div class="topic-item">
+            content.innerHTML = Object.entries(topics).map(([topic, questions], index) => `
+                <div class="topic-item" style="animation-delay: ${index * 0.1}s">
                     <div class="topic-title">${topic}</div>
                     <div class="topic-parties">
-                        ${getTopPartiesForTopic(questions).map(party => 
-                            `<span class="topic-party">${parties[party]}</span>`
-                        ).join('')}
+                        ${getTopPartiesForTopic(questions).map(party =>
+                `<span class="topic-party">${parties[party]}</span>`
+            ).join('')}
                     </div>
                 </div>
             `).join('');
@@ -633,7 +1589,7 @@
         function showPartyProfiles() {
             hideAllResults();
             document.getElementById('party-profiles').classList.add('active');
-            
+
             const profiles = {
                 'ANO': {
                     leader: 'Karel Havlíček a Alena Schillerová',
@@ -696,13 +1652,13 @@
                     priorities: ['Specifické zájmy', 'Práva zvířat', 'Referenda', 'Místní témata', 'Alternativní přístupy', 'Nové politické nápady']
                 }
             };
-            
+
             const content = document.getElementById('profiles-content');
-            content.innerHTML = Object.entries(profiles).map(([key, profile]) => `
-                <div class="party-result" style="margin-bottom: 20px;">
-                    <h3 style="color: #1976d2; margin-bottom: 10px;">${parties[key]}</h3>
+            content.innerHTML = Object.entries(profiles).map(([key, profile], index) => `
+                <div class="party-profile" style="animation-delay: ${index * 0.1}s">
+                    <h3>${parties[key]}</h3>
                     <p><strong>Lídr:</strong> ${profile.leader}</p>
-                    <p style="margin: 10px 0;">${profile.description}</p>
+                    <p>${profile.description}</p>
                     <p><strong>Klíčové priority:</strong> ${profile.priorities.join(', ')}</p>
                 </div>
             `).join('');
@@ -711,12 +1667,12 @@
         function getTopPartiesForTopic(topicQuestions) {
             const scores = calculateResults();
             const topicScores = {};
-            
+
             // Initialize scores for all parties
             Object.keys(parties).forEach(party => {
                 topicScores[party] = 0;
             });
-            
+
             // Calculate scores for this specific topic
             topicQuestions.forEach(questionText => {
                 const questionIndex = questions.findIndex(q => q.text === questionText);
@@ -724,7 +1680,7 @@
                     const question = questions[questionIndex];
                     const userAnswer = answers[questionIndex];
                     const questionWeight = importance[questionIndex] || 3;
-                    
+
                     Object.keys(question.parties).forEach(party => {
                         const partyAnswer = question.parties[party];
                         const difference = Math.abs(userAnswer - partyAnswer);
@@ -733,10 +1689,10 @@
                     });
                 }
             });
-            
+
             // Return top 4 parties for this topic
             return Object.entries(topicScores)
-                .sort(([,a], [,b]) => b - a)
+                .sort(([, a], [, b]) => b - a)
                 .slice(0, 4)
                 .map(([party]) => party);
         }
@@ -756,9 +1712,9 @@
         // Sharing functions
         function getResultsSummary() {
             const scores = calculateResults();
-            const sortedResults = Object.entries(scores).sort(([,a], [,b]) => b - a);
+            const sortedResults = Object.entries(scores).sort(([, a], [, b]) => b - a);
             const topParty = sortedResults[0];
-            
+
             return {
                 topParty: parties[topParty[0]],
                 topScore: topParty[1],
@@ -770,9 +1726,9 @@
         function shareToFacebook() {
             const summary = getResultsSummary();
             const text = `Zjistil(a) jsem svou politickou shodu pomocí Volební kalkulačky ČR 2025! Má nejbližší strana: ${summary.topParty} s ${summary.topScore}% shodou.`;
-            
+
             trackEvent('share', 'Social', 'Facebook');
-            
+
             const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(summary.url)}&quote=${encodeURIComponent(text)}`;
             window.open(facebookUrl, '_blank', 'width=600,height=400');
         }
@@ -784,7 +1740,7 @@
 Top 3: ${summary.top3.join(', ')}
 
 Zjistěte svou politickou shodu také:`;
-            
+
             const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(summary.url)}`;
             window.open(twitterUrl, '_blank', 'width=600,height=400');
         }
@@ -800,7 +1756,7 @@ Top 3 strany:
 ${summary.top3.join('\n')}
 
 Zkus si také: ${summary.url}`;
-            
+
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank');
         }
@@ -821,7 +1777,7 @@ ${summary.top3.join('\n')}
 Vyzkoušej si to také: ${summary.url}
 
 Volební kalkulačka obsahuje 27 otázek a ukáže ti, která z kandidujících stran je ti nejblíže!`;
-            
+
             const emailUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = emailUrl;
         }
@@ -829,7 +1785,7 @@ Volební kalkulačka obsahuje 27 otázek a ukáže ti, která z kandidujících 
         function copyResultsLink() {
             const summary = getResultsSummary();
             const copyBtn = document.getElementById('copy-btn');
-            
+
             // Create detailed text for clipboard
             const textToCopy = `🗳️ Volební kalkulačka ČR 2025
 
@@ -838,14 +1794,14 @@ Má nejbližší politická shoda: ${summary.topParty} (${summary.topScore}%)
 Top 3: ${summary.top3.join(', ')}
 
 Zjisti svou shodu také: ${summary.url}`;
-            
+
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 // Modern clipboard API
                 navigator.clipboard.writeText(textToCopy).then(() => {
-                    copyBtn.textContent = '✅ Zkopírováno!';
+                    copyBtn.innerHTML = '✅ Zkopírováno!';
                     copyBtn.classList.add('copy-success');
                     setTimeout(() => {
-                        copyBtn.textContent = '🔗 Kopírovat odkaz';
+                        copyBtn.innerHTML = '🔗 Kopírovat odkaz';
                         copyBtn.classList.remove('copy-success');
                     }, 2000);
                 }).catch(() => {
@@ -863,20 +1819,20 @@ Zjisti svou shodu také: ${summary.url}`;
             document.body.appendChild(textArea);
             textArea.select();
             textArea.setSelectionRange(0, 99999);
-            
+
             try {
                 document.execCommand('copy');
                 const copyBtn = document.getElementById('copy-btn');
-                copyBtn.textContent = '✅ Zkopírováno!';
+                copyBtn.innerHTML = '✅ Zkopírováno!';
                 copyBtn.classList.add('copy-success');
                 setTimeout(() => {
-                    copyBtn.textContent = '🔗 Kopírovat odkaz';
+                    copyBtn.innerHTML = '🔗 Kopírovat odkaz';
                     copyBtn.classList.remove('copy-success');
                 }, 2000);
             } catch (err) {
                 alert('Kopírování se nepodařilo. Zkopírujte si odkaz ručně: ' + window.location.href);
             }
-            
+
             document.body.removeChild(textArea);
         }
 
@@ -911,13 +1867,23 @@ Zjisti svou shodu také: ${summary.url}`;
             }
         }
 
+        // Animation for progress bars
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fillBar {
+                from { width: 0%; }
+            }
+        `;
+        document.head.appendChild(style);
+
         // Initialize
         init();
-        
+
         // Initialize ads when page loads
         window.addEventListener('load', () => {
             setTimeout(initializeAds, 1000);
         });
     </script>
 </body>
+
 </html>
