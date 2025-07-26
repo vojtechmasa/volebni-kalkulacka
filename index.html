@@ -1116,6 +1116,104 @@
                 box-shadow: 0 0 20px 10px var(--primary);
             }
         }
+
+        /* ========== Styly pro doplňkový obsah a patičku ========== */
+        .content-section {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--primary-light);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .content-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #e2e8f0;
+        }
+
+        .content-section p,
+        .content-section li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+
+        .content-section a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .content-section a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .content-section ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        .small-note {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .footer {
+            background: #0f172a;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            padding: 30px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .container-footer {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-copy {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* ========== Plynulé scrollování ========== */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 
@@ -2097,6 +2195,95 @@ Volební kalkulačka obsahuje 27 otázek a ukáže ti, která z kandidujících 
             localStorage.removeItem('mobile-banner-closed');
         });
     </script>
+    <div class="content-section" id="about">
+        <h2>O projektu</h2>
+        <p>
+            Volební kalkulačka 2025 je nezávislý projekt, jehož cílem je pomoci voličům zorientovat se v politické
+            krajině
+            před volbami do Parlamentu České republiky. Naším posláním je poskytnout přehledný a nestranný nástroj,
+            který na
+            základě odpovědí na klíčové otázky porovná názory uživatele s programy a postoji kandidujících politických
+            stran.
+        </p>
+        <p>
+            Všechny odpovědi stran jsou pečlivě ověřovány z veřejně dostupných zdrojů, jako jsou volební programy,
+            oficiální
+            vyjádření a hlasování v parlamentu. Projekt není spojen s žádnou politickou stranou, hnutím ani státní
+            institucí.
+        </p>
+    </div>
+
+    <div class="content-section" id="contact">
+        <h2>Kontakt</h2>
+        <p>
+            Máte dotaz, připomínku nebo jste našli chybu? Budeme rádi, když se nám ozvete. Nejlepší způsob, jak nás
+            kontaktovat, je prostřednictvím e-mailu.
+        </p>
+        <p>
+            <strong>E-mail:</strong> <a href="mailto:info@volebnikalkulacka.org">info@volebnikalkulacka.org</a>
+        </p>
+        <p class="small-note">
+            Vzhledem k našim omezeným kapacitám nemusí být odpověď okamžitá, ale na každou zprávu se snažíme reagovat.
+        </p>
+    </div>
+
+    <div class="content-section" id="privacy">
+        <h2>Zásady ochrany osobních údajů</h2>
+        <p>
+            Datum poslední aktualizace: 25. července 2025
+        </p>
+        <p>
+            Ochrana vašeho soukromí je pro nás klíčová. Tyto zásady vysvětlují, jaké informace shromažďujeme a jak s
+            nimi
+            nakládáme.
+        </p>
+
+        <h3>Jaké údaje sbíráme?</h3>
+        <ul>
+            <li><strong>Data z kalkulačky:</strong> Odpovědi, které zadáte do volební kalkulačky, jsou zpracovávány
+                pouze
+                dočasně ve vašem prohlížeči, aby bylo možné vypočítat výsledek. Tyto údaje neukládáme, neodesíláme na
+                naše
+                servery ani je nespojujeme s vaší osobou. Po zavření stránky jsou data zapomenuta.</li>
+            <li><strong>Analytická data:</strong> Pro zlepšování našich služeb a pochopení návštěvnosti webu používáme
+                nástroj Google Analytics. Tato služba sbírá anonymizovaná data, jako je počet návštěvníků, navštívené
+                stránky nebo typ zařízení. Tato data neumožňují identifikaci konkrétního uživatele.</li>
+            <li><strong>Reklamní cookies:</strong> Na tomto webu zobrazujeme reklamy poskytované službou Google AdSense.
+                Google a jeho partneři používají soubory cookie (např. cookie DoubleClick) k zobrazování relevantních
+                reklam
+                na základě vašich předchozích návštěv na tomto i jiných webech. Uživatelé se mohou odhlásit od
+                personalizované reklamy v <a href="https://adssettings.google.com/authenticated" target="_blank"
+                    rel="noopener noreferrer">Nastavení reklam Google</a>.</li>
+        </ul>
+
+        <h3>Vaše práva</h3>
+        <p>
+            Máte plnou kontrolu nad soubory cookie ve svém prohlížeči a můžete jejich používání kdykoliv omezit nebo
+            zakázat
+            v nastavení vašeho prohlížeče.
+        </p>
+
+        <h3>Odkazy třetích stran</h3>
+        <p>
+            Náš web může obsahovat odkazy na jiné weby. Nejsme zodpovědní za obsah ani zásady ochrany osobních údajů
+            těchto
+            stránek. Doporučujeme vám se s jejich zásadami seznámit.
+        </p>
+    </div>
+
+    </div>
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="footer-links">
+                <a href="#about">O projektu</a>
+                <a href="#contact">Kontakt</a>
+                <a href="#privacy">Zásady ochrany osobních údajů</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2025 Volební kalkulačka. Všechna práva vyhrazena.
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
